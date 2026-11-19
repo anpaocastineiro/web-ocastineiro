@@ -222,7 +222,7 @@ function makeModalForm(kind){
  const block=document.createElement('div');
  if(kind==='crianzas'){
   block.innerHTML='<p>Podes contar unha idea para mellorar o cole. Escríbea coas túas palabras. Non fai falta dicir quen es.</p>'+
-  '<form name="ideas-crianzas" method="POST" novalidate="false"><input type="hidden" name="form-name" value="ideas-crianzas">'+
+  '<form name="ideas-crianzas" method="POST"><input type="hidden" name="form-name" value="ideas-crianzas">'+
   '<p class="hp-field" aria-hidden="true"><label>Non cubrir<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>'+
   '<label for="temaCrianzas">De que queres falar?</label><select name="tema" id="temaCrianzas" required><option value="">Escolle un tema</option><option>Patio e xogos</option><option>Espazos do cole</option><option>Actividades</option><option>Convivencia</option><option>Outra idea</option></select>'+
   '<label for="mensaxeCrianzas">Que che gustaría propoñer?</label><textarea name="mensaxe" id="mensaxeCrianzas" required maxlength="1200" placeholder="Eu propoño que..."></textarea>'+
