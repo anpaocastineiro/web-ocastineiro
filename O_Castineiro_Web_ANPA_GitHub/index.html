@@ -29,6 +29,16 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 .groups{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.group{background:var(--paper);border:1px solid rgba(15,61,50,.28);padding:22px 21px;display:flex;flex-direction:column;min-height:265px;position:relative;overflow:hidden}.group:after{content:'';height:10px;position:absolute;left:0;right:0;bottom:0;background-image:url('assets/ondas.svg');background-size:cover;background-position:center;opacity:.7}.group:nth-child(2){background:#F4DEE6}.group:nth-child(3){background:var(--mint)}.group .icon{width:42px;height:42px;color:var(--green);margin-bottom:16px}.group h3{font:900 30px/1 var(--serif);letter-spacing:-.035em;color:var(--green);margin-bottom:11px}.group p{font-size:14px;line-height:1.47}.group .text-action{margin-top:auto}
 /* children & transparency */
 .children{background:var(--green);color:var(--paper);position:relative;overflow:hidden}.children .section-head h2,.children .overline{color:var(--paper)}.children .overline:before{background:var(--pink)}.children-grid{display:grid;grid-template-columns:1fr 1fr;gap:35px;align-items:center}.children .copy{font-size:18px;line-height:1.55;max-width:580px}.children .btn{border-color:var(--paper);color:var(--green)}.children-image{display:grid;place-items:center;background:#F3D7DF;border:5px solid var(--paper);padding:27px;min-height:275px;overflow:hidden;transform:rotate(1.3deg)}.children-image img{height:260px;max-width:90%;object-fit:contain}.children-image .caption{font:900 26px/1 var(--serif);letter-spacing:-.03em;text-align:center;color:var(--green);margin-top:8px}.trans-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px}.trans{padding:22px;background:var(--paper);border:1px solid rgba(15,61,50,.24);min-height:210px;display:flex;flex-direction:column}.trans .icon{width:40px;height:40px;margin-bottom:17px;color:var(--green)}.trans h3{color:var(--green);font-size:18px;margin-bottom:8px}.trans p{font-size:13px;line-height:1.45}.trans .text-action{margin-top:auto}
+
+.trans-count{display:block;margin:10px 0 13px;font-size:12px;font-weight:800;color:var(--green)}
+.trans-publication{border-top:1px solid rgba(15,61,50,.28);padding:17px 0 20px}
+.trans-publication:first-child{border-top:0;padding-top:0}
+.trans-publication h3{font:900 23px/1.15 var(--serif);color:var(--green);margin:6px 0 10px}
+.trans-publication .trans-date{font-size:12px;font-weight:800;color:var(--green);margin:0}
+.trans-publication .trans-detail{white-space:pre-line}
+.trans-publication .trans-state{font-weight:800;color:var(--green)}
+.trans-publication .btn{display:inline-flex;margin:6px 0 0}
+
 /* contact */
 .contact{background-color:#E8A7C1}.contact-layout{display:grid;grid-template-columns:1.2fr .8fr;gap:40px;align-items:center}.contact h2{font:900 clamp(40px,5vw,68px)/.96 var(--serif);letter-spacing:-.05em;color:var(--green);margin:8px 0 20px}.contact p{font-size:17px;line-height:1.5;max-width:570px}.contact-stamp{width:300px;max-width:100%;justify-self:center;transform:rotate(8deg);filter:drop-shadow(5px 6px 0 rgba(15,61,50,.09))}
 .footer{background:var(--green);color:var(--paper);padding:32px 0}.foot-row{display:flex;gap:30px;align-items:center;justify-content:space-between}.foot-row strong{font:900 27px var(--serif)}.foot-row small{display:block;line-height:1.55;margin-top:5px;color:#E7E5D8}.foot-row a{color:var(--paper)}
@@ -130,11 +140,11 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
  </div></section>
 <section class="section children" id="crianzas"><div class="container"><div class="children-grid"><div><div class="overline">04 · A voz das crianzas</div><h2 class="serif" style="font-size:clamp(42px,5vw,70px);color:var(--paper);margin:17px 0 18px">O cole tamén é seu.</h2><p class="copy">As crianzas teñen opinións sobre o patio, as clases, as amizades e os espazos onde medran. Podemos crear encontros adaptados á súa idade para escoitalas e devolverlles unha resposta.</p><button class="btn secondary" data-open="crianzas" type="button">Como podería funcionar ↗</button><p class="minor" style="color:#E7E8D8;margin-top:17px">Non se publicarán relatos persoais nin datos identificativos de menores.</p></div><div class="children-image"><img src="assets/rama.webp" alt=""/><span class="caption">A súa voz tamén conta.</span></div></div></div></section>
 <section class="section paper" id="transparencia"><div class="container"><div class="section-head"><div><span class="overline">05 · As cousas claras</span><h2>Información para participar.</h2></div><p>Saber que se propuxo, que se decidiu, que está pendente e a quen corresponde dar resposta.</p></div><div class="trans-grid">
- <article class="trans"><svg class="icon"><use href="#ic-document"/></svg><h3>Actas e acordos</h3><p>Resumos das reunións e acordos, cando se aprobe o procedemento de publicación.</p><button class="text-action" data-doc="Actas e acordos">Consultar ↗</button></article>
- <article class="trans"><svg class="icon"><use href="#ic-chat"/></svg><h3>Propostas e respostas</h3><p>Seguimento de iniciativas colectivas, sen datos persoais.</p><button class="text-action" data-doc="Propostas e respostas">Consultar ↗</button></article>
- <article class="trans"><svg class="icon"><use href="#ic-calendar"/></svg><h3>Convocatorias</h3><p>Encontros, asuntos propostos e información práctica.</p><button class="text-action" data-doc="Convocatorias">Consultar ↗</button></article>
- <article class="trans"><svg class="icon"><use href="#ic-eye"/></svg><h3>Contas e orzamentos</h3><p>Información económica para as persoas socias, conforme aos estatutos e á privacidade.</p><button class="text-action" data-doc="Contas e orzamentos">Consultar ↗</button></article>
- </div><div class="notice">A sección está preparada como estrutura. <strong>Aínda non incorpora documentos oficiais da ANPA.</strong></div>
+ <article class="trans"><svg class="icon"><use href="#ic-document"/></svg><h3>Actas e acordos</h3><p>Resumos das reunións e acordos, cando se aprobe o procedemento de publicación.</p><button class="text-action" data-doc="actas">Consultar ↗</button></article>
+ <article class="trans"><svg class="icon"><use href="#ic-chat"/></svg><h3>Propostas e respostas</h3><p>Seguimento de iniciativas colectivas, sen datos persoais.</p><button class="text-action" data-doc="propostas">Consultar ↗</button></article>
+ <article class="trans"><svg class="icon"><use href="#ic-calendar"/></svg><h3>Convocatorias</h3><p>Encontros, asuntos propostos e información práctica.</p><button class="text-action" data-doc="convocatorias">Consultar ↗</button></article>
+ <article class="trans"><svg class="icon"><use href="#ic-eye"/></svg><h3>Contas e orzamentos</h3><p>Información económica para as persoas socias, conforme aos estatutos e á privacidade.</p><button class="text-action" data-doc="contas">Consultar ↗</button></article>
+ </div><div class="notice" id="avisoTransparencia">A sección está preparada como estrutura. <strong>Aínda non incorpora documentos oficiais da ANPA.</strong></div>
  </div></section>
 <section class="section socias paper" id="socias" aria-labelledby="socias-titulo"><div class="container socias-layout">
 <div class="socias-copy"><span class="overline">06 · Súmate a O Castiñeiro</span><h2 id="socias-titulo">A escola tamén se constrúe entre todas.</h2><p>Facerte socia é apoiar unha asociación de familias aberta e participativa. Coas achegas podemos desenvolver actividades, compartir recursos e impulsar propostas para a nosa escola.</p>
@@ -159,7 +169,55 @@ dialogClose.addEventListener('click',closeDialog);overlay.addEventListener('clic
 function msgForm(){const block=document.createElement('div');block.innerHTML='<label for="subject">Asunto</label><input id="subject" autocomplete="off" placeholder="Sobre que che gustaría falar?"><label for="detail">Mensaxe</label><textarea id="detail" placeholder="Conta a túa idea ou inquedanza, sen incluír datos persoais doutras persoas..."></textarea><button type="button" class="btn primary" id="copyMessage">Copiar mensaxe ↗</button><p class="copy-status" id="copyStatus" role="status" aria-live="polite"></p>';dialogBody.appendChild(block);block.querySelector('#copyMessage').addEventListener('click',async()=>{const s=block.querySelector('#subject').value.trim(),d=block.querySelector('#detail').value.trim(),status=block.querySelector('#copyStatus');if(!s&&!d){status.textContent='Escribe primeiro a túa proposta ou inquedanza.';return}const text='Para O Castiñeiro — Asociación de Familias\nAsunto: '+(s||'Sen asunto')+'\n\n'+d;try{await navigator.clipboard.writeText(text);status.textContent='Mensaxe copiada. Non se enviou ningunha información.'}catch{const tmp=document.createElement('textarea');tmp.value=text;tmp.style.cssText='position:fixed;top:-9999px;';document.body.appendChild(tmp);tmp.select();try{status.textContent=document.execCommand('copy')?'Mensaxe copiada. Non se enviou.':'Non se puido copiar automaticamente. Selecciona o texto e cópiao.'}catch{status.textContent='Non foi posible copiar automaticamente. Selecciona o texto e cópiao.'}tmp.remove()}})}
 $$('[data-open]').forEach(el=>el.addEventListener('click',()=>{const type=el.dataset.open;if(type==='idea'||type==='encontro'){openDialog(type==='idea'?'Tes unha idea ou inquedanza?':'Propoñer un tema para un encontro');p('Escribe a mensaxe para copiala e compartila pola canle que escollas. Esta web de demostración non envía nin almacena información.');msgForm();note('Se é un asunto sensible, evita incluír datos que identifiquen crianzas ou familias en canles públicas.')}else if(type==='crianzas'){openDialog('A voz das crianzas');p('Proponse organizar encontros voluntarios adaptados á idade, cunha facilitación coidadosa e sen expor experiencias persoais doutras crianzas.');p('As cuestións colectivas poderían trasladarse aos órganos competentes e recibir unha devolución comprensible para o alumnado.');note('É unha proposta para debater. Non existe unha convocatoria de encontros infantís neste prototipo.')}}));
 const names={comunicacion:'Comunicación e transparencia',comunidade:'Participación e comunidade',educacion:'Educación, dereitos e propostas'};function openGroup(id){openDialog(names[id]);p('Esta é unha proposta de grupo de traballo aínda non constituído. Poderíase participar de maneira continuada ou nunha tarefa puntual, sen ocupar cargos.');if(settings.groupInvites[id])link('Entrar no grupo de WhatsApp ↗',settings.groupInvites[id]);else note('A ligazón de invitación só se publicará cando o grupo exista e se autorice o acceso.');p('Nun grupo de WhatsApp, o número de teléfono pode ser visible para outras persoas integrantes.')}$$('[data-group]').forEach(b=>b.addEventListener('click',()=>openGroup(b.dataset.group)));
-$$('[data-doc]').forEach(b=>b.addEventListener('click',()=>{openDialog(b.dataset.doc);p('Esta sección poderá incorporar documentos ou información cando se aproben os criterios de publicación, acceso e protección de datos.');note('Non se publican actas, acordos nin contas oficiais nesta demostración.')}));
+// Publicacións autorizadas para a sección de transparencia, xeradas por Decap CMS no build.
+const transparencyLabels={actas:'Actas e acordos',propostas:'Propostas e respostas',convocatorias:'Convocatorias',contas:'Contas e orzamentos'};
+let transparencyItems=[],transparencyLoadFailed=false;
+function publicTransparencyLink(value){
+ if(typeof value!=='string')return null;
+ const url=value.trim();
+ return /^https:\/\/[^\s]+$/i.test(url)||/^\/assets\/uploads\/[^\s]+$/i.test(url)?url:null;
+}
+function dateGl(value){
+ const match=/^(\d{4})-(\d{2})-(\d{2})$/.exec(String(value||''));
+ return match?match[3]+'/'+match[2]+'/'+match[1]:'';
+}
+function addTransText(parent,tag,value,className){
+ if(!value)return;
+ const el=document.createElement(tag);if(className)el.className=className;
+ el.textContent=String(value);parent.appendChild(el);
+}
+function showTransparency(category){
+ openDialog(transparencyLabels[category]||'Información para participar');
+ if(transparencyLoadFailed){note('Non se puido cargar a información. Proba de novo máis tarde.');return;}
+ const entries=transparencyItems.filter(x=>x.categoria===category);
+ if(!entries.length){p('Aínda non hai publicacións neste apartado. Publicaranse aquí cando a ANPA aprobe a información para a súa difusión.');return;}
+ for(const item of entries){
+  const article=document.createElement('article');article.className='trans-publication';
+  addTransText(article,'p',dateGl(item.data),'trans-date');
+  addTransText(article,'h3',item.titulo);
+  addTransText(article,'p',item.resumo);
+  addTransText(article,'p',item.contido,'trans-detail');
+  if(item.estado)addTransText(article,'p','Estado: '+item.estado,'trans-state');
+  if(item.resposta)addTransText(article,'p','Resposta ou acordo: '+item.resposta,'trans-detail');
+  for(const [value,label] of [[item.documento,'Consultar documento público ↗'],[item.ligazon,'Abrir ligazón pública ↗']]){
+   const url=publicTransparencyLink(value);
+   if(url){const a=document.createElement('a');a.className='btn secondary';a.textContent=label;a.href=url;a.target='_blank';a.rel='noopener noreferrer';article.appendChild(a);}
+  }
+  dialogBody.appendChild(article);
+ }
+}
+$('[data-doc]').forEach(b=>b.addEventListener('click',()=>showTransparency(b.dataset.doc)));
+fetch('/content/transparencia.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Erro HTTP');return r.json()}).then(data=>{
+ transparencyItems=Array.isArray(data.items)?data.items.filter(x=>x&&Object.hasOwn(transparencyLabels,x.categoria)&&typeof x.titulo==='string'):[];
+ for(const btn of $('[data-doc]')){
+  const n=transparencyItems.filter(x=>x.categoria===btn.dataset.doc).length;
+  const article=btn.closest('.trans');
+  if(article&&n){const span=document.createElement('span');span.className='trans-count';span.textContent=n===1?'1 publicación':n+' publicacións';article.insertBefore(span,btn);}
+ }
+ const aviso=$('#avisoTransparencia');
+ if(aviso&&transparencyItems.length)aviso.textContent='Información pública da ANPA. Os documentos publícanse despois da súa revisión e autorización.';
+}).catch(()=>{transparencyLoadFailed=true;const aviso=$('#avisoTransparencia');if(aviso)aviso.textContent='Non foi posible cargar a información neste momento.';});
+
 $$('[data-sample]').forEach(b=>b.addEventListener('click',()=>{openDialog('Exemplo de seguimento dunha proposta');p('Un asunto pode pasar pola recollida inicial, a conversa colectiva, a preparación dunha proposta e a devolución da resposta.');p('A información pública non debería incluír datos persoais nin identificar menores.');note('Este caso é ficticio e só serve para ensinar como funcionaría o taboleiro.')}));
 $$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.filter;$$('[data-filter]').forEach(a=>a.setAttribute('aria-pressed',String(a===b)));if(publicIdeas.length)renderPublicIdeas(v);else $$('.idea-card').forEach(c=>c.hidden=v!=='todos'&&v!==c.dataset.state)}));
 $('#waTalk').addEventListener('click',()=>{openDialog('WhatsApp da ANPA');if(settings.whatsappNumber){link('Abrir conversa ↗','https://wa.me/'+settings.whatsappNumber.replace(/\D/g,''))}else{p('Aínda non se configurou un número oficial de WhatsApp nesta versión.');note('Non se inventaron contactos nin se enviarán mensaxes automaticamente.')}});
