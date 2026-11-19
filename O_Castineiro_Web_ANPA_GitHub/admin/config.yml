@@ -1,15 +1,24 @@
-# Antes de activar CMS: crear o sitio Decap Turbo da ANPA e cubrir TURBO_SITE_ID.
+# Decap Turbo · O Castiñeiro
+# PASO PENDENTE: crear o sitio en Decap Turbo e substituír o UUID do Site ID.
+# Organización GitHub: anpaocastineiro / repositorio: web-ocastineiro
+# Ruta da configuración no repositorio:
+# O_Castineiro_Web_ANPA_GitHub/admin/config.yml
+# REPOSITORIO PÚBLICO: non cargar datos persoais, información confidencial
+# nin borradores sensibles, aínda que publicado sexa false.
 backend:
   name: turbo-github
   turbo_site_id: SUBSTITUIR_POLO_SITE_ID_DA_ANPA
   branch: main
 locale: gl
+site_url: "https://web-ocastineiro.netlify.app"
+display_url: "https://web-ocastineiro.netlify.app"
 media_folder: "O_Castineiro_Web_ANPA_GitHub/assets/uploads"
 public_folder: "/assets/uploads"
 collections:
   - name: "iniciativas"
     label: "Ideas en marcha"
     label_singular: "Iniciativa"
+    description: "Só propostas para difusión pública, sen nomes nin información persoal. O repositorio GitHub é público, aínda que a publicación non apareza na web."
     folder: "O_Castineiro_Web_ANPA_GitHub/content/iniciativas"
     create: true
     extension: "json"
@@ -51,6 +60,7 @@ collections:
       - {label: "Visible na web", name: "publicado", widget: "boolean", default: false}
   - name: "novas"
     label: "Novas (ocultas na portada)"
+    description: "Colección desactivada na portada. Crear só contidos públicos que non identifiquen menores nin familias."
     folder: "O_Castineiro_Web_ANPA_GitHub/content/novas"
     create: true
     extension: "json"
@@ -68,6 +78,7 @@ collections:
       - {label: "Publicada", name: "publicado", widget: "boolean", default: false}
   - name: "axenda"
     label: "Axenda (oculta na portada)"
+    description: "Colección desactivada na portada. Non introducir listas de asistentes nin datos de contacto."
     folder: "O_Castineiro_Web_ANPA_GitHub/content/axenda"
     create: true
     extension: "json"
