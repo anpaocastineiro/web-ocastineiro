@@ -171,7 +171,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 <input type="hidden" name="form-name" value="alta-socias">
 <p class="hp-field" aria-hidden="true"><label>Deixar baleiro<input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 <div class="socias-row"><label>Nome<input name="nome" autocomplete="given-name" required maxlength="90" placeholder="O teu nome"></label><label>Apelidos<input name="apelidos" autocomplete="family-name" required maxlength="120" placeholder="Os teus apelidos"></label></div>
-<label>Correo electrónico<input name="correo" type="email" autocomplete="email" required maxlength="180" placeholder="correo@exemplo.gal"></label>
+<label>Correo electrónico<input name="email" type="email" autocomplete="email" required maxlength="180" placeholder="correo@exemplo.gal"></label>
 <label>Teléfono (opcional)<input name="telefono" type="tel" autocomplete="tel" maxlength="30"></label>
 <fieldset class="socias-courses" aria-describedby="socias-courses-note"><legend>Cursos das crianzas (opcional)</legend><p id="socias-courses-note">Marca todos os cursos nos que tes crianzas escolarizadas. Non pedimos os seus nomes.</p><div class="socias-course-grid"><label><input type="checkbox" name="cursos[]" value="infantil-3"> Infantil · 3 anos</label><label><input type="checkbox" name="cursos[]" value="infantil-4"> Infantil · 4 anos</label><label><input type="checkbox" name="cursos[]" value="infantil-5"> Infantil · 5 anos</label><label><input type="checkbox" name="cursos[]" value="primaria-1"> 1º de Primaria</label><label><input type="checkbox" name="cursos[]" value="primaria-2"> 2º de Primaria</label><label><input type="checkbox" name="cursos[]" value="primaria-3"> 3º de Primaria</label><label><input type="checkbox" name="cursos[]" value="primaria-4"> 4º de Primaria</label><label><input type="checkbox" name="cursos[]" value="primaria-5"> 5º de Primaria</label><label><input type="checkbox" name="cursos[]" value="primaria-6"> 6º de Primaria</label></div></fieldset>
 <label class="form-consent"><input type="checkbox" name="informacion_privacidade" value="lin-e-acepto" required> Lin a <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">información de privacidade</a> e solicito que a ANPA contacte comigo para tramitar a alta.</label>
@@ -190,7 +190,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 </form>
 <form name="propostas-familias" method="POST" data-netlify="true" netlify-honeypot="bot-field" hidden>
 <input name="form-name" type="hidden" value="propostas-familias"><input name="bot-field">
-<input name="tipo"><input name="asunto"><textarea name="mensaxe"></textarea><input name="correo"><input name="informacion_privacidade">
+<input name="tipo"><input name="asunto"><textarea name="mensaxe"></textarea><input name="email"><input name="informacion_privacidade">
 </form>
 <div class="overlay" id="overlay" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="dialogHeading"><button class="modal-close" type="button" id="dialogClose" aria-label="Pechar">×</button><h2 id="dialogHeading"></h2><div id="dialogBody"></div></div></div>
 <script>
@@ -235,7 +235,7 @@ function makeModalForm(kind){
   '<p class="hp-field" aria-hidden="true"><label>Non cubrir<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>'+
   '<label for="asuntoProposta">Asunto</label><input id="asuntoProposta" name="asunto" maxlength="140" required placeholder="Sobre que che gustaría falar?">'+
   '<label for="mensaxeProposta">Mensaxe</label><textarea id="mensaxeProposta" name="mensaxe" maxlength="2500" required placeholder="Conta a túa idea ou inquedanza, evitando datos persoais doutras persoas..."></textarea>'+
-  '<label for="correoProposta">Correo para resposta (opcional)</label><input type="email" id="correoProposta" name="correo" maxlength="180" autocomplete="email">'+
+  '<label for="correoProposta">Correo para resposta (opcional)</label><input type="email" id="correoProposta" name="email" maxlength="180" autocomplete="email">'+
   '<label class="form-consent"><input name="informacion_privacidade" value="lin-e-acepto" type="checkbox" required> Lin a <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">información de privacidade</a> e solicito que a ANPA reciba esta mensaxe.</label>'+
   '<button type="submit" class="btn primary">Enviar á ANPA ↗</button><p class="form-status" role="status" aria-live="polite"></p></form>';
  }
