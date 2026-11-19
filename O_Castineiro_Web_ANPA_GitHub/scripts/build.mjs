@@ -12,4 +12,8 @@ novas.sort((a,b)=>String(b.data).localeCompare(String(a.data)));axenda.sort((a,b
 await mkdir(path.join(out,'content'),{recursive:true});
 await writeFile(path.join(out,'content','ideas.json'),JSON.stringify({items},null,2)+'\n');
 await writeFile(path.join(out,'content','actualidade.json'),JSON.stringify({novas,axenda},null,2)+'\n');
-console.log('Compilación rematada: '+items.length+' iniciativas, '+novas.length+' novas e '+axenda.length+' actividades.');
+const categoriasTransparencia=new Set(['actas','propostas','convocatorias','contas']);
+const transparencia=(await readItems('transparencia')).filter(x=>categoriasTransparencia.has(x.categoria)&&typeof x.titulo==='string');
+transparencia.sort((a,b)=>String(b.data||'').localeCompare(String(a.data||'')));
+await writeFile(path.join(out,'content','transparencia.json'),JSON.stringify({items:transparencia.map(({titulo,categoria,data,resumo,contido,estado,resposta,documento,ligazon})=>({titulo,categoria,data,resumo,contido,estado,resposta,documento,ligazon}))},null,2)+'\n');
+console.log('Compilación rematada: '+items.length+' iniciativas, '+novas.length+' novas, '+axenda.length+' actividades e '+transparencia.length+' publicacións de transparencia.');
