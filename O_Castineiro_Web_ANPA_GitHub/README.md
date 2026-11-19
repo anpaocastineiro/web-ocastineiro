@@ -65,3 +65,5 @@ A web dispón de tres formularios: `alta-socias`, `propostas-familias` e `ideas-
 **Implementación:** o ficheiro `__forms.html` define os nomes de todos os campos. A web envía por POST a `/__forms.html` coa codificación `application/x-www-form-urlencoded` e o campo `form-name`. Non introducir tokens de Gmail no código nin conectar a caixa de correo ao repositorio.
 
 **Privacidade:** as respostas son datos de contacto privados. Non incluílas no repositorio público, no CMS nin nos logs de compilación. A asociación debe confirmar a información de protección de datos, os permisos de acceso a Netlify e os períodos de conservación antes de recibir solicitudes reais.
+
+> Recompilación solicitada o 19/11/2026 tras activar a detección de formularios en Netlify. Non modifica o deseño nin os datos da web.
