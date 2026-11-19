@@ -4,13 +4,13 @@ backend:
   turbo_site_id: SUBSTITUIR_POLO_SITE_ID_DA_ANPA
   branch: main
 locale: gl
-media_folder: "assets/uploads"
+media_folder: "O_Castineiro_Web_ANPA_GitHub/assets/uploads"
 public_folder: "/assets/uploads"
 collections:
   - name: "iniciativas"
     label: "Ideas en marcha"
     label_singular: "Iniciativa"
-    folder: "content/iniciativas"
+    folder: "O_Castineiro_Web_ANPA_GitHub/content/iniciativas"
     create: true
     extension: "json"
     format: "json"
@@ -51,7 +51,7 @@ collections:
       - {label: "Visible na web", name: "publicado", widget: "boolean", default: false}
   - name: "novas"
     label: "Novas (ocultas na portada)"
-    folder: "content/novas"
+    folder: "O_Castineiro_Web_ANPA_GitHub/content/novas"
     create: true
     extension: "json"
     format: "json"
@@ -68,7 +68,7 @@ collections:
       - {label: "Publicada", name: "publicado", widget: "boolean", default: false}
   - name: "axenda"
     label: "Axenda (oculta na portada)"
-    folder: "content/axenda"
+    folder: "O_Castineiro_Web_ANPA_GitHub/content/axenda"
     create: true
     extension: "json"
     format: "json"
@@ -94,7 +94,7 @@ collections:
     label: "Información para participar"
     label_singular: "Publicación"
     description: "Só información autorizada para difusión pública. GitHub é público incluso se a publicación está desmarcada; non engadir datos persoais, actas internas nin documentos confidenciais."
-    folder: "content/transparencia"
+    folder: "O_Castineiro_Web_ANPA_GitHub/content/transparencia"
     create: true
     extension: "json"
     format: "json"
