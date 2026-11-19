@@ -1,0 +1,9 @@
+# O sitio web da ANPA atópase nun subcartafol do repositorio.
+# Este ficheiro permite que Netlify detecte a base correcta desde GitHub.
+[build]
+  base = "O_Castineiro_Web_ANPA_GitHub"
+  command = "node scripts/build.mjs"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
