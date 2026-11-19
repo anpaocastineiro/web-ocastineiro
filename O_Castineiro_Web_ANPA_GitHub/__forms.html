@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="gl">
+<head>
+  <meta charset="utf-8">
+  <meta name="robots" content="noindex,nofollow">
+  <title>Formularios de O Castiñeiro</title>
+</head>
+<body>
+<!--
+  Plantillas estáticas para o detector de Netlify Forms.
+  Non gardar aquí datos de solicitudes: estes son só nomes de campos.
+  Os formularios visibles son xerados na portada; deben conservar
+  os mesmos nomes, incluído form-name e o campo antispam bot-field.
+-->
+<div style="display:none" aria-hidden="true">
+  <form name="alta-socias" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="alta-socias">
+    <input name="bot-field">
+    <input name="nome">
+    <input name="apelidos">
+    <input name="email">
+    <input name="telefono">
+    <input name="cursos[]">
+    <input name="informacion_privacidade">
+  </form>
+  <form name="ideas-crianzas" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="ideas-crianzas">
+    <input name="bot-field">
+    <input name="tema">
+    <textarea name="mensaxe"></textarea>
+    <input name="autorizacion_adulta">
+  </form>
+  <form name="propostas-familias" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+    <input type="hidden" name="form-name" value="propostas-familias">
+    <input name="bot-field">
+    <input name="tipo">
+    <input name="asunto">
+    <textarea name="mensaxe"></textarea>
+    <input name="email">
+    <input name="informacion_privacidade">
+  </form>
+</div>
+</body>
+</html>
