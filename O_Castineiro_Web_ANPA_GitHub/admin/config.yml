@@ -89,3 +89,40 @@ collections:
           - {label: "Cancelada", value: "cancelada"}
       - {label: "Exemplo ficticio", name: "exemplo", widget: "boolean", default: false}
       - {label: "Publicada", name: "publicado", widget: "boolean", default: false}
+
+  - name: "transparencia"
+    label: "Información para participar"
+    label_singular: "Publicación"
+    description: "Só información autorizada para difusión pública. GitHub é público incluso se a publicación está desmarcada; non engadir datos persoais, actas internas nin documentos confidenciais."
+    folder: "content/transparencia"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    identifier_field: "titulo"
+    fields:
+      - {label: "Título", name: "titulo", widget: "string"}
+      - label: "Apartado"
+        name: "categoria"
+        widget: "select"
+        options:
+          - {label: "Actas e acordos", value: "actas"}
+          - {label: "Propostas e respostas", value: "propostas"}
+          - {label: "Convocatorias", value: "convocatorias"}
+          - {label: "Contas e orzamentos", value: "contas"}
+      - {label: "Data", name: "data", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false}
+      - {label: "Resumo público", name: "resumo", widget: "text"}
+      - {label: "Información ampliada", name: "contido", widget: "text", required: false}
+      - label: "Estado da proposta (só se corresponde)"
+        name: "estado"
+        widget: "select"
+        required: false
+        options:
+          - {label: "Recollida", value: "Recollida"}
+          - {label: "En conversa", value: "En conversa"}
+          - {label: "En seguimento", value: "En seguimento"}
+          - {label: "Resolto", value: "Resolto"}
+      - {label: "Resposta ou acordo público (opcional)", name: "resposta", widget: "text", required: false}
+      - {label: "Documento público (PDF ou arquivo revisado)", name: "documento", widget: "file", required: false}
+      - {label: "Ligazón a información pública", name: "ligazon", widget: "string", required: false}
+      - {label: "Publicar na web (non fai privado o ficheiro en GitHub)", name: "publicado", widget: "boolean", default: false}
