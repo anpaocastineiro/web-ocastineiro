@@ -2,7 +2,7 @@ import {readdir,readFile,writeFile,mkdir,cp,rm} from 'node:fs/promises';
 import path from 'node:path';
 const root=process.cwd(),out=path.join(root,'dist');
 await rm(out,{recursive:true,force:true});await mkdir(out,{recursive:true});
-for(const name of ['index.html','iniciativas.html'])await cp(path.join(root,name),path.join(out,name));
+for(const name of ['index.html','iniciativas.html','privacidade.html'])await cp(path.join(root,name),path.join(out,name));
 for(const folder of ['assets','admin'])await cp(path.join(root,folder),path.join(out,folder),{recursive:true});
 async function readItems(folder){const dir=path.join(root,'content',folder);const files=(await readdir(dir)).filter(n=>n.endsWith('.json')).sort(),items=[];for(const file of files){const item=JSON.parse(await readFile(path.join(dir,file),'utf8'));if(item.publicado!==true)continue;item.id=file.replace(/\.json$/,'');items.push(item)}return items}
 const items=await readItems('iniciativas');
