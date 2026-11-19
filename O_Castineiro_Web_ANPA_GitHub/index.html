@@ -76,15 +76,16 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 
 /* Formularios Netlify para familias e propostas das crianzas */
 .hp-field{position:absolute!important;left:-10000px!important;width:1px!important;height:1px!important;overflow:hidden!important}
-.socias-form-shell .form-consent{display:flex;flex-direction:row;align-items:flex-start;gap:9px;font-size:12px;line-height:1.5}
-.socias-form-shell .form-consent input{width:18px;min-width:18px;height:18px;min-height:0;margin:1px 0 0;padding:0;accent-color:var(--green)}
+.socias-form-shell .form-consent{display:flex;flex-direction:row;align-items:flex-start;gap:12px;font-size:13px;font-weight:500;line-height:1.5}
+.socias-form-shell .form-consent input{width:20px;min-width:20px;height:20px;min-height:0;margin:1px 0 0;padding:0;accent-color:var(--green)}
+.socias-form-shell .form-consent span,.modal .form-consent span{display:block;min-width:0;flex:1;overflow-wrap:break-word}
 .socias-form-shell .form-consent a,.modal .form-consent a{color:var(--green);text-decoration:underline}
 .socias-form-shell .form-small{font-size:12px;margin:0}
 .socias-form-shell .form-status,.modal .form-status{min-height:22px;font-size:13px;margin:4px 0 0;font-weight:700;color:var(--green)}
 .socias-form-shell button[type=submit]:not(:disabled){opacity:1;cursor:pointer}
 .socias-form-shell button[type=submit]:disabled{cursor:wait}
 .modal select{width:100%;background:white;border:1.5px solid var(--green);padding:11px;min-height:44px}
-.modal form .form-consent{display:flex;gap:10px;align-items:flex-start;font-size:13px;font-weight:600;line-height:1.5;margin:14px 0}
+.modal form .form-consent{display:flex;flex-direction:row;gap:10px;align-items:flex-start;font-size:13px;font-weight:500;line-height:1.5;margin:14px 0}
 .modal form .form-consent input{width:18px;min-width:18px;height:18px;margin:1px 0;padding:0;accent-color:var(--green)}
 .modal .form-help{background:var(--mint);padding:10px 12px;font-size:13px}
 .modal .form-status{margin:12px 0 0}
@@ -174,7 +175,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 <label>Correo electrónico<input name="email" type="email" autocomplete="email" required maxlength="180" placeholder="correo@exemplo.gal"></label>
 <label>Teléfono (opcional)<input name="telefono" type="tel" autocomplete="tel" maxlength="30"></label>
 <fieldset class="socias-courses" aria-describedby="socias-courses-note"><legend>Cursos das crianzas (opcional)</legend><p id="socias-courses-note">Marca todos os cursos nos que tes crianzas escolarizadas. Non pedimos os seus nomes.</p><div class="socias-course-grid"><label><input type="checkbox" name="cursos[]" value="infantil-3"> Infantil · 3 anos</label><label><input type="checkbox" name="cursos[]" value="infantil-4"> Infantil · 4 anos</label><label><input type="checkbox" name="cursos[]" value="infantil-5"> Infantil · 5 anos</label><label><input type="checkbox" name="cursos[]" value="primaria-1"> 1º de Primaria</label><label><input type="checkbox" name="cursos[]" value="primaria-2"> 2º de Primaria</label><label><input type="checkbox" name="cursos[]" value="primaria-3"> 3º de Primaria</label><label><input type="checkbox" name="cursos[]" value="primaria-4"> 4º de Primaria</label><label><input type="checkbox" name="cursos[]" value="primaria-5"> 5º de Primaria</label><label><input type="checkbox" name="cursos[]" value="primaria-6"> 6º de Primaria</label></div></fieldset>
-<label class="form-consent"><input type="checkbox" name="informacion_privacidade" value="lin-e-acepto" required> Lin a <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">información de privacidade</a> e solicito que a ANPA contacte comigo para tramitar a alta.</label>
+<label class="form-consent"><input type="checkbox" name="informacion_privacidade" value="lin-e-acepto" required><span>Lin a <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">información de privacidade</a> e solicito que a ANPA contacte comigo para tramitar a alta.</span></label>
 <p class="form-small">Esta solicitude non confirma automaticamente a alta nin o pagamento da cota.</p>
 <button type="submit" class="btn primary">Solicitar alta ↗</button>
 <p class="form-status" role="status" aria-live="polite"></p>
@@ -227,7 +228,7 @@ function makeModalForm(kind){
   '<label for="temaCrianzas">De que queres falar?</label><select name="tema" id="temaCrianzas" required><option value="">Escolle un tema</option><option>Patio e xogos</option><option>Espazos do cole</option><option>Actividades</option><option>Convivencia</option><option>Outra idea</option></select>'+
   '<label for="mensaxeCrianzas">Que che gustaría propoñer?</label><textarea name="mensaxe" id="mensaxeCrianzas" required maxlength="1200" placeholder="Eu propoño que..."></textarea>'+
   '<p class="form-help">Non escribas nomes, apelidos nin datos persoais teus ou doutras crianzas. Se necesitas axuda por algo que che preocupa, fala cunha persoa adulta de confianza.</p>'+
-  '<label class="form-consent"><input type="checkbox" name="autorizacion_adulta" required value="si"> Unha persoa adulta responsable revisou a mensaxe e autoriza o envío. <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">Privacidade</a></label>'+
+  '<label class="form-consent"><input type="checkbox" name="autorizacion_adulta" required value="si"><span>Unha persoa adulta responsable revisou a mensaxe e autoriza o envío. <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">Privacidade</a>.</span></label>'+
   '<button type="submit" class="btn primary">Enviar a miña idea ↗</button><p class="form-status" role="status" aria-live="polite"></p></form>';
  }else{
   block.innerHTML='<p>Escribe a túa proposta e chegará á ANPA para que poida revisala. Non se publicará automaticamente na web.</p>'+
@@ -236,14 +237,14 @@ function makeModalForm(kind){
   '<label for="asuntoProposta">Asunto</label><input id="asuntoProposta" name="asunto" maxlength="140" required placeholder="Sobre que che gustaría falar?">'+
   '<label for="mensaxeProposta">Mensaxe</label><textarea id="mensaxeProposta" name="mensaxe" maxlength="2500" required placeholder="Conta a túa idea ou inquedanza, evitando datos persoais doutras persoas..."></textarea>'+
   '<label for="correoProposta">Correo para resposta (opcional)</label><input type="email" id="correoProposta" name="email" maxlength="180" autocomplete="email">'+
-  '<label class="form-consent"><input name="informacion_privacidade" value="lin-e-acepto" type="checkbox" required> Lin a <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">información de privacidade</a> e solicito que a ANPA reciba esta mensaxe.</label>'+
+  '<label class="form-consent"><input name="informacion_privacidade" value="lin-e-acepto" type="checkbox" required><span>Lin a <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">información de privacidade</a> e solicito que a ANPA reciba esta mensaxe.</span></label>'+
   '<button type="submit" class="btn primary">Enviar á ANPA ↗</button><p class="form-status" role="status" aria-live="polite"></p></form>';
  }
  dialogBody.appendChild(block);
  const form=block.querySelector('form');
  form.addEventListener('submit',event=>{event.preventDefault();submitANPAForm(form)});
 }
-$('[data-open]').forEach(el=>el.addEventListener('click',()=>{
+$$('[data-open]').forEach(el=>el.addEventListener('click',()=>{
  const type=el.dataset.open;
  if(type==='idea'||type==='encontro'){openDialog(type==='idea'?'Tes unha idea ou inquedanza?':'Propoñer un tema para un encontro');makeModalForm(type);}
  else if(type==='crianzas'){openDialog('A túa voz tamén conta');makeModalForm('crianzas');}
@@ -286,10 +287,10 @@ function showTransparency(category){
   dialogBody.appendChild(article);
  }
 }
-$('[data-doc]').forEach(b=>b.addEventListener('click',()=>showTransparency(b.dataset.doc)));
+$$('[data-doc]').forEach(b=>b.addEventListener('click',()=>showTransparency(b.dataset.doc)));
 fetch('/content/transparencia.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Erro HTTP');return r.json()}).then(data=>{
  transparencyItems=Array.isArray(data.items)?data.items.filter(x=>x&&Object.hasOwn(transparencyLabels,x.categoria)&&typeof x.titulo==='string'):[];
- for(const btn of $('[data-doc]')){
+ for(const btn of $$('[data-doc]')){
   const n=transparencyItems.filter(x=>x.categoria===btn.dataset.doc).length;
   const article=btn.closest('.trans');
   if(article&&n){const span=document.createElement('span');span.className='trans-count';span.textContent=n===1?'1 publicación':n+' publicacións';article.insertBefore(span,btn);}
