@@ -48,3 +48,20 @@ Revisar e anonimizar calquera texto ou PDF **antes** de incorporalo ao CMS. Os f
 
 ## Manter e recuperar a web
 O código e os contidos públicos están versionados no GitHub da ANPA. Se un cambio editorial causa un problema, pode revisarse ou reverterse no historial de commits; os contrasinais e identificadores de sesión nunca deben gardarse neste repositorio.
+
+## Recepción de formularios en Netlify
+
+A web dispón de tres formularios: `alta-socias`, `propostas-familias` e `ideas-crianzas`.
+
+**Configuración necesaria no panel de Netlify (non se pode facer só desde GitHub):**
+
+1. Abrir o proxecto `web-ocastineiro` en Netlify → **Forms** → **Enable form detection** (se aínda non está activada).
+2. Facer un novo **deploy** desde a rama `main` despois de activar a detección. O ficheiro `__forms.html` inclúese en `dist` e contén os tres esquemas estáticos que Netlify debe detectar.
+3. Comprobar que en **Forms → Active forms** aparecen os tres nomes.
+4. En **Forms → Submission notifications**, engadir unha **Email notification** para todos os formularios, co destino `anpa.o.castineiro@gmail.com`.
+5. Se Netlify envía un correo de confirmación ao destinatario, abrilo desde a conta da ANPA e confirmar a notificación.
+6. Probar cada formulario con datos ficticios e comprobar a chegada á sección Forms e ao Gmail da ANPA; revisar a bandexa de spam de Netlify se faltan probas.
+
+**Implementación:** o ficheiro `__forms.html` define os nomes de todos os campos. A web envía por POST a `/__forms.html` coa codificación `application/x-www-form-urlencoded` e o campo `form-name`. Non introducir tokens de Gmail no código nin conectar a caixa de correo ao repositorio.
+
+**Privacidade:** as respostas son datos de contacto privados. Non incluílas no repositorio público, no CMS nin nos logs de compilación. A asociación debe confirmar a información de protección de datos, os permisos de acceso a Netlify e os períodos de conservación antes de recibir solicitudes reais.
