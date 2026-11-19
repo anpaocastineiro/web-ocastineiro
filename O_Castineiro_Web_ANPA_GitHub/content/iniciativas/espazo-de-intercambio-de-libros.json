@@ -1,0 +1,9 @@
+{
+  "id": "espazo-de-intercambio-de-libros",
+  "titulo": "Espazo de intercambio de libros",
+  "descripcion": "Buscar un xeito comunitario de compartir lecturas, recursos e experiencias.",
+  "estado": "seguimento",
+  "detalle": "Exemplo ficticio para mostrar o funcionamento do taboleiro.",
+  "exemplo": true,
+  "publicado": true
+}

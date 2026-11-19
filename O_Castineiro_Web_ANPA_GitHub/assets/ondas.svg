@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 74" preserveAspectRatio="none">
+<defs><pattern id="grain" width="29" height="23" patternUnits="userSpaceOnUse"><circle cx="7" cy="11" r="1" fill="#FFF8EC" opacity=".35"/><circle cx="19" cy="17" r="1.5" fill="#FFF8EC" opacity=".3"/><path d="M13 4h5" stroke="#FFF8EC" stroke-width=".6" opacity=".36"/></pattern></defs>
+<path fill="#E8A7C1" d="M0 27 Q185 1 360 29 T720 30 T1080 28 T1440 24 V74H0Z"/>
+<path fill="#EBB23C" d="M0 58 Q240 11 472 40 T860 37 T1440 45V74H0Z"/>
+<path fill="#0F3D32" d="M0 69Q260 43 525 58T1000 58T1440 55V74H0Z"/>
+<path fill="url(#grain)" d="M0 28Q200 4 380 31T720 31T1080 27T1440 25V74H0Z"/>
+</svg>

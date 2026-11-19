@@ -1,0 +1,91 @@
+# Antes de activar CMS: crear o sitio Decap Turbo da ANPA e cubrir TURBO_SITE_ID.
+backend:
+  name: turbo-github
+  turbo_site_id: SUBSTITUIR_POLO_SITE_ID_DA_ANPA
+  branch: main
+locale: gl
+media_folder: "assets/uploads"
+public_folder: "/assets/uploads"
+collections:
+  - name: "iniciativas"
+    label: "Ideas en marcha"
+    label_singular: "Iniciativa"
+    folder: "content/iniciativas"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    identifier_field: "titulo"
+    fields:
+      - {label: "Título", name: "titulo", widget: "string"}
+      - {label: "Descrición pública", name: "descripcion", widget: "text"}
+      - label: "Estado"
+        name: "estado"
+        widget: "select"
+        options:
+          - {label: "Recollida", value: "recollida"}
+          - {label: "En conversa", value: "conversa"}
+          - {label: "En seguimento", value: "seguimento"}
+          - {label: "Resolto", value: "resolta"}
+      - label: "Categoría"
+        name: "categoria"
+        widget: "select"
+        required: false
+        options:
+          - {label: "Educación", value: "educacion"}
+          - {label: "Convivencia", value: "convivencia"}
+          - {label: "Espazos", value: "espazos"}
+          - {label: "Comunidade", value: "comunidade"}
+          - {label: "Outras", value: "outras"}
+      - {label: "Data da proposta", name: "data", widget: "datetime", required: false, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false}
+      - {label: "Información ampliada", name: "detalle", widget: "text", required: false}
+      - {label: "Resultado ou acordo final", name: "resultado", widget: "text", required: false}
+      - label: "Actualizacións"
+        name: "actualizacions"
+        widget: "list"
+        required: false
+        fields:
+          - {label: "Data", name: "data", widget: "datetime", format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false}
+          - {label: "Avance ou acordo", name: "texto", widget: "text"}
+      - {label: "Exemplo ficticio", name: "exemplo", widget: "boolean", default: false}
+      - {label: "Visible na web", name: "publicado", widget: "boolean", default: false}
+  - name: "novas"
+    label: "Novas (ocultas na portada)"
+    folder: "content/novas"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    identifier_field: "titulo"
+    fields:
+      - {label: "Título", name: "titulo", widget: "string"}
+      - {label: "Resumo", name: "resumo", widget: "text"}
+      - {label: "Contido", name: "contido", widget: "text"}
+      - {label: "Data", name: "data", widget: "datetime", format: "YYYY-MM-DD", time_format: false}
+      - {label: "Categoría", name: "categoria", widget: "string", required: false}
+      - {label: "Imaxe", name: "imaxe", widget: "image", required: false}
+      - {label: "Exemplo ficticio", name: "exemplo", widget: "boolean", default: false}
+      - {label: "Publicada", name: "publicado", widget: "boolean", default: false}
+  - name: "axenda"
+    label: "Axenda (oculta na portada)"
+    folder: "content/axenda"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    identifier_field: "titulo"
+    fields:
+      - {label: "Título", name: "titulo", widget: "string"}
+      - {label: "Descrición", name: "descripcion", widget: "text"}
+      - {label: "Inicio", name: "data", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss"}
+      - {label: "Remate", name: "fin", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ss"}
+      - {label: "Lugar", name: "lugar", widget: "string", required: false}
+      - {label: "Ligazón", name: "ligazon", widget: "string", required: false}
+      - label: "Estado"
+        name: "estado"
+        widget: "select"
+        options:
+          - {label: "Confirmada", value: "confirmada"}
+          - {label: "Cancelada", value: "cancelada"}
+      - {label: "Exemplo ficticio", name: "exemplo", widget: "boolean", default: false}
+      - {label: "Publicada", name: "publicado", widget: "boolean", default: false}
