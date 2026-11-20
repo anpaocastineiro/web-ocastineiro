@@ -117,7 +117,9 @@ collections:
       - {label: "Fotografía da tarefa (opcional)", name: "imaxe", widget: "image", required: false, hint: "Fotografía propia con autorización. Evita imaxes que permitan identificar menores ou outras persoas sen permiso."}
       - {label: "Descrición da fotografía (accesibilidade)", name: "imaxe_alt", widget: "string", required: false, hint: "Ex.: Túnel de vimbio medrado na horta do colexio."}
       - {label: "Tempo estimado", name: "tempo", widget: "string", required: false, hint: "Ex.: 30 minutos, 1 tarde"}
-      - {label: "Data", name: "data", widget: "datetime", required: false, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false}
+      - {label: "Data da actividade (cando estea confirmada)", name: "data", widget: "datetime", required: false, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false, hint: "Só a data da xornada, non a data na que se publicou a petición."}
+      - {label: "Hora de comezo (HH:MM)", name: "hora", widget: "string", required: false, hint: "Formato de 24 horas. Ex.: 16:30"}
+      - {label: "Hora de remate (HH:MM, opcional)", name: "hora_fin", widget: "string", required: false, hint: "Ex.: 18:00. Se non a sabes, deixa este campo baleiro."}
       - {label: "Lugar ou modalidade", name: "lugar", widget: "string", required: false, hint: "Ex.: Desde a casa"}
       - label: "Estado"
         name: "estado"
