@@ -126,7 +126,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 .help-list-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:17px}.help-list-head h3{font:900 clamp(30px,3vw,40px)/1.08 var(--serif);color:var(--green);margin:9px 0 0}.help-list-head p{max-width:300px}
 .help-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .help-card{display:flex;flex-direction:column;gap:12px;background:var(--paper);border:1.5px solid #0f3d3240;border-radius:8px;padding:22px;min-width:0}.help-card:nth-child(3n+2){background:var(--pink-soft)}.help-card:nth-child(3n+3){background:var(--mint)}
-.help-card h4{font:900 27px/1.08 var(--serif);color:var(--green);margin:0}.help-card .help-image{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:5px;border:1px solid rgba(15,61,50,.22);background:var(--mint);margin-bottom:3px}.help-card .help-caption{font-size:11px;line-height:1.4;color:var(--green);opacity:.83;margin-top:-8px}.help-card p{font-size:14px;line-height:1.5;overflow-wrap:anywhere;margin:0}
+.help-card h4{font:900 27px/1.08 var(--serif);color:var(--green);margin:0}.help-card .help-description{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:4;line-clamp:4;overflow:hidden}.help-kind{display:inline-flex;align-self:flex-start;max-width:100%;font-size:10px;font-weight:900;line-height:1.3;letter-spacing:.07em;padding:7px 10px;border:1px solid rgba(15,61,50,.34);border-radius:3px;background:var(--ochre-soft);color:var(--green);text-transform:uppercase}.help-kind--chamada_colaboracion{background:var(--pink-soft)}.help-kind--encontro{background:var(--mint)}.help-kind--iniciativa{background:var(--green);color:var(--paper)}.help-kind--outra{background:var(--paper)}.help-actions-row{display:flex;flex-direction:column;gap:11px;margin-top:auto}.help-actions-row .text-action{margin-top:3px}.help-card .help-pill--provisional{background:#F7EFE2;border-style:dashed}.help-modal-image{width:100%;max-height:300px;object-fit:cover;border-radius:4px;margin:10px 0 18px}.help-modal-meta{display:flex;flex-wrap:wrap;gap:7px;margin:18px 0}.help-modal-meta span{padding:8px 10px;background:var(--mint);border:1px solid rgba(15,61,50,.25);border-radius:4px;font-size:13px;font-weight:800;color:var(--green)}.help-modal-extra{background:var(--mint);border-left:4px solid var(--green);padding:15px 17px;margin:15px 0;white-space:pre-line;line-height:1.5}.help-modal-call{width:100%;margin-top:20px}.help-card .help-image{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:5px;border:1px solid rgba(15,61,50,.22);background:var(--mint);margin-bottom:3px}.help-card .help-caption{font-size:11px;line-height:1.4;color:var(--green);opacity:.83;margin-top:-8px}.help-card p{font-size:14px;line-height:1.5;overflow-wrap:anywhere;margin:0}
 .help-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}.help-meta .help-pill{display:inline-flex;align-items:center;max-width:100%;gap:5px;padding:7px 10px;border:1px solid rgba(15,61,50,.36);border-radius:5px;font-size:12px;line-height:1.35;font-weight:800;color:var(--green);overflow-wrap:anywhere}.help-pill time{font:inherit}.help-pill--date{background:var(--ochre-soft)}.help-pill--hour{background:var(--pink-soft)}.help-pill--place{background:var(--mint)}.help-pill--duration{background:var(--paper)}.help-pill--pending{background:#E3EDE2;border-style:dashed!important}.help-card button{margin-top:auto;align-self:flex-start}.help-card .btn{width:100%;padding:11px 12px;text-align:center}.help-card{overflow:hidden}
 .help-empty{grid-column:1/-1;border:1.5px dashed #0f3d3275;border-radius:7px;padding:23px;background:var(--paper);line-height:1.5;color:var(--green)}
 .help-note{margin-top:15px}
@@ -348,6 +348,39 @@ const names={comunicacion:'Axudar a comunicar',comunidade:'Facer comunidade',edu
 function openHelpForm(taskTitle=''){openDialog(taskTitle?'Apúntate: '+taskTitle:'Bota unha man, cando poidas');makeModalForm('axuda',taskTitle)}
 const offerHelp=$('#ofrecerAxuda');if(offerHelp)offerHelp.addEventListener('click',()=>openHelpForm());
 const helpGrid=$('#axudasList');
+const helpTypeLabels={actividade_puntual:'Actividade puntual',chamada_colaboracion:'Chamada a colaboración',iniciativa:'Iniciativa que precisa axuda',encontro:'Encontro',outra:'Outra colaboración'};
+function getHelpType(task){return Object.prototype.hasOwnProperty.call(helpTypeLabels,task.tipo)?task.tipo:'chamada_colaboracion'}
+function getHelpPhoto(task){
+ const value=task.imaxe;
+ return typeof value==='string'&&value.startsWith('/assets/uploads/')&&!value.includes('../')&&!value.includes('\\')&&/\.(?:jpe?g|png|webp|gif)$/i.test(value)?value:'';
+}
+function helpImage(task,cssClass){
+ const url=getHelpPhoto(task);if(!url)return null;
+ const img=document.createElement('img');img.className=cssClass;img.src=url;img.alt=(typeof task.imaxe_alt==='string'&&task.imaxe_alt.trim())?task.imaxe_alt.trim():'Fotografía da actividade: '+task.titulo;
+ img.loading='lazy';img.decoding='async';img.addEventListener('error',()=>img.remove());return img;
+}
+function openHelpDetails(task){
+ openDialog(task.titulo);
+ const type=getHelpType(task);
+ const category=document.createElement('span');category.className='help-kind help-kind--'+type;category.textContent=helpTypeLabels[type];dialogBody.append(category);
+ const photo=helpImage(task,'help-modal-image');if(photo)dialogBody.append(photo);
+ p(task.descripcion||'');
+ const meta=document.createElement('div');meta.className='help-modal-meta';
+ const detailDate=typeof task.data==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(task.data)?task.data:'';
+ const detailStart=typeof task.hora==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(task.hora)?task.hora:'';
+ const detailEnd=typeof task.hora_fin==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(task.hora_fin)?task.hora_fin:'';
+ for(const value of [detailDate?'📅 '+detailDate.split('-').reverse().join('/'):'',detailStart?'🕒 '+detailStart+(detailEnd&&detailEnd>detailStart?'–'+detailEnd:''):'',task.lugar?'📍 '+task.lugar:'',task.tempo?'Duración: '+task.tempo:'',task.persoas?'Persoas necesarias: '+task.persoas:'']){
+  if(value){const pill=document.createElement('span');pill.textContent=value;meta.append(pill)}
+ }
+ if(meta.childElementCount)dialogBody.append(meta);
+ if((detailDate||detailStart)&&task.data_confirmada!==true)note('Data e hora orientativas, pendentes de confirmar.');
+ if(task.detalle){const sub=document.createElement('h3');sub.textContent='En que consiste?';dialogBody.append(sub);const d=document.createElement('p');d.textContent=task.detalle;d.style.whiteSpace='pre-line';dialogBody.append(d)}
+ if(task.material){const box=document.createElement('div');box.className='help-modal-extra';const strong=document.createElement('strong');strong.textContent='Material ou cousas que traer:';box.append(strong,document.createElement('br'),document.createTextNode(task.material));dialogBody.append(box)}
+ p('A inscrición é unha solicitude: a ANPA contactará contigo para confirmar os detalles.');
+ const btn=document.createElement('button');btn.type='button';btn.className='btn primary help-modal-call';btn.textContent='Quero apuntarme ↗';
+ btn.addEventListener('click',()=>openHelpForm(task.titulo));dialogBody.append(btn);
+}
+
 function showHelpEmpty(text){if(helpGrid){const p=document.createElement('p');p.className='help-empty';p.textContent=text;helpGrid.replaceChildren(p)}}
 fetch('/content/axudas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{
  if(!helpGrid)return;
@@ -356,11 +389,10 @@ fetch('/content/axudas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('
  const frag=document.createDocumentFragment();
  for(const task of items.slice(0,9)){
   const card=document.createElement('article');card.className='help-card';
-  if(typeof task.imaxe==='string'&&task.imaxe.startsWith('/assets/uploads/')&&!task.imaxe.includes('../')&&!task.imaxe.includes('\\')&&/\.(?:jpe?g|png|webp|gif)$/i.test(task.imaxe)){
-   const photo=document.createElement('img');photo.className='help-image';photo.src=task.imaxe;photo.alt=typeof task.imaxe_alt==='string'&&task.imaxe_alt.trim()?task.imaxe_alt.trim():'Fotografía da tarefa: '+task.titulo;photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',()=>photo.remove());card.append(photo);
-  }
+  const photo=helpImage(task,'help-image');if(photo)card.append(photo);
+  const type=getHelpType(task);const label=document.createElement('span');label.className='help-kind help-kind--'+type;label.textContent=helpTypeLabels[type];card.append(label);
   const h=document.createElement('h4');h.textContent=task.titulo;card.append(h);
-  if(task.descripcion){const p=document.createElement('p');p.textContent=task.descripcion;card.append(p)}
+  if(task.descripcion){const description=document.createElement('p');description.className='help-description';description.textContent=task.descripcion;card.append(description)}
   const meta=document.createElement('div');meta.className='help-meta';
   function addHelpPill(text,kind,dateTimeValue=''){
    const pill=document.createElement('span');pill.className='help-pill help-pill--'+kind;
@@ -374,10 +406,15 @@ fetch('/content/axudas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('
   if(date)addHelpPill('📅 '+date.split('-').reverse().join('/'),'date',date);
   if(start)addHelpPill('🕒 '+(end&&end>start?start+'–'+end:start),'hour',date?date+'T'+start:'');
   if(!date&&!start)addHelpPill('Data e hora por concretar','pending');
+  if((date||start)&&task.data_confirmada!==true)addHelpPill('Horario orientativo','provisional');
   if(task.lugar)addHelpPill('📍 '+task.lugar,'place');
   if(task.tempo)addHelpPill('Duración: '+task.tempo,'duration');
+  if(task.persoas)addHelpPill('Persoas: '+task.persoas,'place');
   card.append(meta);
-  const btn=document.createElement('button');btn.type='button';btn.className='btn primary';btn.textContent='Quero apuntarme ↗';btn.setAttribute('aria-label','Solicitar apuntarme a: '+task.titulo);btn.addEventListener('click',()=>openHelpForm(task.titulo));card.append(btn);frag.append(card);
+  const actions=document.createElement('div');actions.className='help-actions-row';
+  const more=document.createElement('button');more.type='button';more.className='text-action';more.textContent='Ver detalles ↗';more.setAttribute('aria-label','Ver detalles de '+task.titulo);more.addEventListener('click',()=>openHelpDetails(task));actions.append(more);
+  const btn=document.createElement('button');btn.type='button';btn.className='btn primary';btn.textContent='Quero apuntarme ↗';btn.setAttribute('aria-label','Solicitar apuntarme a: '+task.titulo);btn.addEventListener('click',()=>openHelpForm(task.titulo));actions.append(btn);
+  card.append(actions);frag.append(card);
  }
  helpGrid.replaceChildren(frag);
 }).catch(()=>showHelpEmpty('Non foi posible consultar as axudas. Podes ofrecer unha colaboración co botón anterior.'));
