@@ -51,13 +51,13 @@ O código e os contidos públicos están versionados no GitHub da ANPA. Se un ca
 
 ## Recepción de formularios en Netlify
 
-A web dispón de tres formularios: `alta-socias`, `propostas-familias` e `ideas-crianzas`.
+A web dispón de tres formularios de uso ordinario: `alta-socias`, `propostas-familias` e `ideas-crianzas`. O cuarto, `atencion-familias` («Falamos en privado»), está preparado no código, pero **desactivado para as persoas visitantes** ata validar o protocolo de atención e a privacidade.
 
 **Configuración necesaria no panel de Netlify (non se pode facer só desde GitHub):**
 
 1. Abrir o proxecto `web-ocastineiro` en Netlify → **Forms** → **Enable form detection** (se aínda non está activada).
 2. Facer un novo **deploy** desde a rama `main` despois de activar a detección. O ficheiro `__forms.html` inclúese en `dist` e contén os tres esquemas estáticos que Netlify debe detectar.
-3. Comprobar que en **Forms → Active forms** aparecen os tres nomes.
+3. Comprobar que en **Forms → Active forms** aparecen os formularios detectados, incluído `atencion-familias` cando Netlify o procese; a detección por si soa non significa que o formulario estea aberto ao público.
 4. En **Forms → Submission notifications**, engadir unha **Email notification** para todos os formularios, co destino `anpa.o.castineiro@gmail.com`.
 5. Se Netlify envía un correo de confirmación ao destinatario, abrilo desde a conta da ANPA e confirmar a notificación.
 6. Probar cada formulario con datos ficticios e comprobar a chegada á sección Forms e ao Gmail da ANPA; revisar a bandexa de spam de Netlify se faltan probas.
@@ -67,3 +67,17 @@ A web dispón de tres formularios: `alta-socias`, `propostas-familias` e `ideas-
 **Privacidade:** as respostas son datos de contacto privados. Non incluílas no repositorio público, no CMS nin nos logs de compilación. A asociación debe confirmar a información de protección de datos, os permisos de acceso a Netlify e os períodos de conservación antes de recibir solicitudes reais.
 
 > Recompilación solicitada o 19/11/2026 tras activar a detección de formularios en Netlify. Non modifica o deseño nin os datos da web.
+
+
+## Falamos en privado · preparación e activación
+A portada inclúe a sección `#falamos-en-privado` e unha ligazón desde Participa. A finalidade é **pedir un contacto privado**, non recibir relatos de incidencias ou datos sensibles. O formulario `atencion-familias` está definido en `__forms.html` para a detección de Netlify, pero o seu `fieldset` e o botón de envío están desactivados na portada.
+
+**Non activar ata completar:**
+1. Aprobar o protocolo de atención ás familias e designar as persoas que recibirán solicitudes e as substitutas en caso de conflito de intereses.
+2. Validar a información legal de `privacidade.html`: finalidade, base xurídica, acceso, terceiros provedores, prazos de conservación e exercicio de dereitos.
+3. Revisar os permisos de Netlify Forms e a conta de Gmail; non reenviar automaticamente solicitudes a persoas non autorizadas.
+4. En Netlify → Forms → Submission notifications, crear/verificar unha notificación **específica do formulario `atencion-familias`** a `anpa.o.castineiro@gmail.com`. Este paso require acceso ao panel de Netlify; un commit en GitHub non o configura.
+5. Cando estea validado, retirar `disabled` do `fieldset` e do botón, modificar os textos de «canle en preparación», realizar un novo despregamento e facer unha proba con datos totalmente ficticios.
+6. Comprobar que o formulario chega a Netlify Forms e ao Gmail autorizado. Non empregar casos reais para as probas.
+
+**Seguridade:** non incorporar unha caixa de mensaxe libre, non gardar información de familias en GitHub e non publicar os envíos en Decap CMS.
