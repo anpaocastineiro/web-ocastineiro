@@ -132,6 +132,16 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 .help-note{margin-top:15px}
 @media(max-width:900px){.help-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.help-intro{grid-template-columns:1fr}}
 @media(max-width:600px){.help-grid{grid-template-columns:1fr}.help-list-head{display:block}.help-intro{padding:22px 19px}}
+.participa-simple{display:flex;align-items:center;justify-content:space-between;gap:30px;padding:30px;background:var(--mint);border:2px solid var(--green);border-radius:10px}
+.participa-simple h2{font-size:clamp(35px,4.5vw,58px);margin:12px 0}
+.participa-simple p{font-size:16px;line-height:1.55;max-width:680px;margin:0}
+.participa-simple>.btn{flex:none}
+.participa-choices{display:grid;gap:12px;margin-top:18px}
+.participa-choices .btn{justify-content:flex-start;text-align:left;white-space:normal}
+.ideas-cta{display:flex;flex-direction:column;align-items:flex-start;justify-content:center;gap:14px;padding:25px;background:var(--mint)}
+.ideas-cta h3{font-size:clamp(29px,3vw,43px);margin:0}
+.ideas-cta p{line-height:1.55}
+@media(max-width:700px){.participa-simple{flex-direction:column;align-items:stretch;padding:23px}.participa-simple>.btn{width:100%}.hero-actions>.btn{width:100%}.ideas-cta{padding:22px}.nav a{min-height:44px;display:flex;align-items:center}}
 </style>
 </head>
 <body>
@@ -152,11 +162,11 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 <header class="header" id="inicio"><div class="container header-content">
  <a class="brand" href="#inicio" aria-label="O Castiñeiro, ir ao inicio"><img class="brand-symbol" src="assets/castineiro.webp" alt=""/><span><span class="brand-name">O Castiñeiro</span><span class="brand-descr">ASOCIACIÓN DE FAMILIAS</span></span></a>
  <button class="hamburger" id="menuButton" type="button" aria-controls="mainNavigation" aria-expanded="false">☰ Menú</button>
- <nav class="nav" id="mainNavigation" aria-label="Navegación principal"><a href="#anpa">A ANPA</a><a href="#participa">Participa</a><a href="#encontros">Encontros</a><a href="#ideas">Ideas en marcha</a><a href="#grupos">Bota unha man</a><a href="#crianzas">As crianzas</a><a href="#transparencia">Transparencia</a><a href="#falamos-en-privado" class="nav-private">Falamos en privado</a><a href="#socias" class="btn primary small">Faite socia ↗</a></nav>
+ <nav class="nav" id="mainNavigation" aria-label="Navegación principal"><a href="#anpa">A ANPA</a><a href="#actualidade">Que facemos</a><a href="#participa">Participa</a><a href="#transparencia">Transparencia</a><a href="#falamos-en-privado" class="nav-private">Contacto privado</a><a href="#socias" class="btn primary small">Faite socia ↗</a></nav>
 </div></header>
 <main>
 <section class="hero paper" aria-labelledby="hero-heading"><div class="container hero-main">
- <div class="hero-copy"><span class="overline">Escola pública · familias · comunidade</span><h1 class="serif" id="hero-heading"><span>Falamos,</span><span>escoitamos,</span><span class="highlight">facemos.</span></h1><p>Unha comunidade de familias que comparte inquedanzas, propón ideas e constrúe xunta unha vida escolar mellor.</p><div class="hero-actions"><a class="btn primary" href="#participa">Quero participar ↗</a><a class="btn secondary" href="#encontros">Coñece os encontros ↗</a></div></div>
+ <div class="hero-copy"><span class="overline">Escola pública · familias · comunidade</span><h1 class="serif" id="hero-heading"><span>Falamos,</span><span>escoitamos,</span><span class="highlight">facemos.</span></h1><p>Unha comunidade de familias que comparte inquedanzas, propón ideas e constrúe xunta unha vida escolar mellor.</p><div class="hero-actions"><a class="btn primary" href="#participa">Quero participar ↗</a><a class="btn secondary" href="#actualidade">Que estamos facendo ↗</a></div></div>
  <div class="hero-scene" aria-hidden="true"><img class="school" src="assets/colexio_gravado.svg" alt=""/><img class="chestnut" src="assets/castineiro.webp" alt=""/><span class="rays">✳</span></div>
 </div><div class="wave" aria-hidden="true"></div></section>
 <section class="section about-section paper" id="anpa" aria-labelledby="about-heading"><div class="container">
@@ -169,13 +179,12 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
  </div>
  <p class="minor about-note">Esta sección describe o modelo de participación proposto para a web. O funcionamento efectivo da asociación réxese polos seus estatutos e polos acordos das súas asembleas.</p>
 </div></section>
-<section class="action-section paper" id="participa" aria-label="Formas de participar"><div class="container">
- <div class="overline" style="margin:0 0 17px">Non hai unha soa maneira de participar</div>
- <div class="action-grid">
-  <a class="action pink riso" href="#encontros"><span class="action-body"><h2>Encontros<br>abertos</h2><p>Un lugar para falar, escoitar e construír propostas coas familias.</p><span class="action-link">Como funcionarían ↗</span></span><span class="art" aria-hidden="true"><svg class="icon"><use href="#ic-megaphone"/></svg></span></a>
-  <button class="action yellow riso" data-open="idea" type="button" style="text-align:left"><span class="action-body"><h2>Tes unha<br>idea?</h2><p>Propón actividades, melloras ou asuntos para debater.</p><span class="action-link">Compártea ↗</span></span><span class="art" aria-hidden="true"><svg class="icon"><use href="#ic-bulb"/></svg></span></button>
-  <a class="action mint riso" href="#grupos"><span class="action-body"><h2>Podo botar<br>unha man?</h2><p>Unha idea ou unha pequena axuda tamén contan. Sen compromisos fixos.</p><span class="action-link">Ver posibilidades ↗</span></span><span class="art" aria-hidden="true"><svg class="icon"><use href="#ic-hand"/></svg></span></a>
- </div><p class="private-access">Hai algunha situación que prefires tratar sen expoñela publicamente? <a href="#falamos-en-privado">Coñece «Falamos en privado» ↗</a></p><p class="minor" style="margin:15px 0 0">Este sitio é unha proposta para debater na ANPA. As iniciativas e os procesos descritos non están anunciados como xa operativos.</p>
+<section class="action-section paper" id="participa" aria-labelledby="participa-heading"><div class="container">
+ <div class="participa-simple">
+  <div><span class="overline">Participa · O Castiñeiro</span><h2 id="participa-heading" class="serif">Tes algo que contarnos?</h2><p>Unha idea, unha pregunta, un tema para un encontro ou ganas de botar unha man. Non tes que saber onde encaixa: cóntanolo e atoparemos a maneira.</p></div>
+  <button class="btn primary" type="button" data-open="participacion">Fala coa ANPA ↗</button>
+ </div>
+ <p class="private-access">Para unha situación delicada, utiliza <a href="#falamos-en-privado">o contacto privado</a>. Se queres apuntarte a unha actividade concreta, atoparás a inscrición na súa ficha.</p>
 </div></section>
 
 <section class="section private-contact" id="falamos-en-privado" aria-labelledby="private-heading"><div class="container private-layout">
@@ -213,15 +222,15 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
     </form>
   </div>
 </div></section>
-<section class="section alternate paper" id="encontros"><div class="container">
+<div id="actualidade"></div><section class="section alternate paper" id="encontros"><div class="container">
  <div class="section-head"><div><span class="overline">01 · Encontros abertos</span><h2>E se nos sentamos a falar?</h2></div><p>Un espazo para preguntar, escoitar outras familias e pensar xuntas. Sen necesidade de estar todas de acordo.</p></div>
- <div class="two-col"><article class="feature-panel panel riso"><div class="art"><img src="assets/ourizo.webp" alt=""/></div><div><span class="stamp">Unha proposta de funcionamento</span><h3>A orde do día tamén a fas ti.</h3><p>Nos encontros xerais poderías propoñer un asunto antes da convocatoria. Nos encontros temáticos falaríase do tema anunciado.</p><button type="button" data-open="encontro" class="btn primary small" style="margin-top:15px">Propoñer un tema ↗</button></div></article>
+ <div class="two-col"><article class="feature-panel panel riso"><div class="art"><img src="assets/ourizo.webp" alt=""/></div><div><span class="stamp">Unha proposta de funcionamento</span><h3>A orde do día tamén a fas ti.</h3><p>Nos encontros xerais poderías propoñer un asunto antes da convocatoria. Nos encontros temáticos falaríase do tema anunciado.</p><button type="button" data-open="participacion" class="btn primary small" style="margin-top:15px">Fala coa ANPA ↗</button></div></article>
  <div style="display:flex;flex-direction:column;justify-content:center"><span class="kicker">Falar · escoitar · dar resposta</span><h3 class="serif" style="font-size:clamp(36px,4.3vw,61px);margin:13px 0 15px">O importante é que as conversas continúen.</h3><p style="line-height:1.55">Cada encontro podería rematar cun resumo, os próximos pasos e as cuestións que deben trasladarse á Asemblea Xeral ou ao centro educativo.</p><div class="notice">Próximo encontro: <strong>pendente de acordar e convocar</strong>.</div></div></div>
  <div class="number-grid"><div class="number"><strong>01</strong><h3>Propoñer</h3><p>Calquera familia pode achegar asuntos e contribuír á orde do día.</p></div><div class="number"><strong>02</strong><h3>Conversar</h3><p>Escoita activa, quendas de palabra e espazo para discrepar.</p></div><div class="number"><strong>03</strong><h3>Dar resposta</h3><p>Resumo público dos acordos e seguimento do que se propuxo.</p></div></div>
  </div></section>
 <section class="section paper" id="ideas"><div class="container"><div class="section-head"><div><span class="overline">02 · Ideas en marcha</span><h2>Que pasa coas propostas?</h2></div><p>Un taboleiro que permita coñecer o estado dos asuntos colectivos e saber por que avanzan ou quedan pendentes.</p></div>
- <div class="board-grid"><article class="bulletin riso"><span class="poster-stamp">A comunidade tamén constrúe escola</span><h3>As ideas<br>tamén botan<br>raíces.</h3><p>Compartir, debater, facer unha proposta e contar que pasou despois.</p><button class="text-action" data-open="idea" type="button">Teño unha proposta ↗</button><div class="poster-icon" aria-hidden="true"><svg class="icon"><use href="#ic-bulb"/></svg></div></article>
-  <div><span class="kicker">Accesos rápidos</span><div class="shortcuts"><a class="shortcut" href="#encontros"><svg class="icon"><use href="#ic-chat"/></svg>Encontros</a><a class="shortcut" href="#ideas"><svg class="icon"><use href="#ic-bulb"/></svg>Ideas</a><a class="shortcut" href="#grupos"><svg class="icon"><use href="#ic-group"/></svg>Bota unha man</a><a class="shortcut" href="#crianzas"><svg class="icon"><use href="#ic-kids"/></svg>Crianzas</a><a class="shortcut" href="#transparencia"><svg class="icon"><use href="#ic-document"/></svg>Transparencia</a><button class="shortcut" data-open="encontro" type="button"><svg class="icon"><use href="#ic-calendar"/></svg>Propoñer tema</button></div></div>
+ <div class="board-grid"><article class="bulletin riso"><span class="poster-stamp">A comunidade tamén constrúe escola</span><h3>As ideas<br>tamén botan<br>raíces.</h3><p>Compartir, debater, facer unha proposta e contar que pasou despois.</p><button class="text-action" data-open="participacion" type="button">Compartir unha proposta ↗</button><div class="poster-icon" aria-hidden="true"><svg class="icon"><use href="#ic-bulb"/></svg></div></article>
+  <div class="ideas-cta"><span class="kicker">Participar é sinxelo</span><h3 class="serif">Un só lugar para falar coa ANPA.</h3><p>Se queres propoñer algo ou comentar un asunto, utiliza o mesmo acceso. As ideas que avancemos poderán aparecer neste taboleiro.</p><button class="btn primary" type="button" data-open="participacion">Fala coa ANPA ↗</button></div>
  </div>
  <p class="minor" style="margin:31px 0 9px"><strong>Exemplos de seguimento, non propostas reais.</strong> Os filtros mostran como se podería organizar o taboleiro cando se poña en marcha.</p><div class="filter-row" role="group" aria-label="Filtrar exemplos por estado"><button class="filter" data-filter="todos" aria-pressed="true">Todas</button><button class="filter" data-filter="recollida" aria-pressed="false">Recollidas</button><button class="filter" data-filter="conversa" aria-pressed="false">En conversa</button><button class="filter" data-filter="seguimento" aria-pressed="false">En seguimento</button><button class="filter" data-filter="resolta" aria-pressed="false">Resoltas</button></div>
  <div class="idea-grid"><article class="idea-card" data-state="recollida"><span class="tag">EXEMPLO · RECOLLIDA</span><h3>Espazos de sombra no patio</h3><p>Unha familia achega a idea de estudar alternativas para os días de máis calor.</p><button class="text-action" data-sample="patio">Ver o exemplo ↗</button></article><article class="idea-card" data-state="conversa"><span class="tag">EXEMPLO · EN CONVERSA</span><h3>Convivencia e metodoloxías</h3><p>Compartir inquedanzas e formular preguntas colectivas sobre a vida escolar.</p><button class="text-action" data-sample="convivencia">Ver o exemplo ↗</button></article><article class="idea-card" data-state="seguimento"><span class="tag">EXEMPLO · EN SEGUIMENTO</span><h3>Espazo de intercambio de libros</h3><p>Buscar un xeito comunitario de compartir lecturas, recursos e experiencias.</p><button class="text-action" data-sample="libros">Ver o exemplo ↗</button></article></div>
@@ -340,7 +349,13 @@ function makeModalForm(kind,taskTitle=''){
 }
 $$('[data-open]').forEach(el=>el.addEventListener('click',()=>{
  const type=el.dataset.open;
- if(type==='idea'||type==='encontro'){openDialog(type==='idea'?'Tes unha idea ou inquedanza?':'Propoñer un tema para un encontro');makeModalForm(type);}
+ if(type==='participacion'){openDialog('Que queres contarnos?');p('Escolle a opción que mellor encaixe. Só verás un formulario despois de escoller.');
+  const options=[['Teño unha idea ou consulta','idea'],['Quero propoñer un tema para un encontro','encontro'],['Quero botar unha man','axuda']];
+  const wrap=document.createElement('div');wrap.className='participa-choices';
+  options.forEach(([label,key])=>{const btn=document.createElement('button');btn.type='button';btn.className='btn secondary';btn.textContent=label+' ↗';btn.addEventListener('click',()=>{openDialog(label);makeModalForm(key)});wrap.appendChild(btn)});
+  dialogBody.appendChild(wrap);
+ }
+ else if(type==='idea'||type==='encontro'){openDialog(type==='idea'?'Tes unha idea ou inquedanza?':'Propoñer un tema para un encontro');makeModalForm(type);}
  else if(type==='crianzas'){openDialog('A túa voz tamén conta');makeModalForm('crianzas');}
 }));
 const names={comunicacion:'Axudar a comunicar',comunidade:'Facer comunidade',educacion:'Compartir ideas sobre a escola'};function openGroup(id){openDialog(names[id]);p('Podes achegar unha idea, unha opinión ou unha axuda puntual. Non tes que vir a reunións nin comprometerte a seguir colaborando.');p('Se non tes tempo agora, tamén está ben. A participación non depende de canto traballo poidas asumir.');const help=document.createElement('button');help.type='button';help.className='btn primary';help.textContent='Quero botar unha man ↗';help.addEventListener('click',()=>{openDialog('Bota unha man, cando poidas');makeModalForm('axuda')});dialogBody.appendChild(help);if(settings.groupInvites[id]){link('Espazo de coordinación en WhatsApp ↗',settings.groupInvites[id]);note('Nese grupo de WhatsApp o teu número podería ser visible para as demais persoas integrantes.')}}$$('[data-group]').forEach(b=>b.addEventListener('click',()=>openGroup(b.dataset.group)));
