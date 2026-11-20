@@ -171,11 +171,11 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
   </div>
   <div class="private-form-panel">
     <h3>Solicita unha conversa privada</h3>
-    <p>Este é o formulario previsto para a canle de atención ás familias. <strong>Aínda está en preparación</strong>: non admite envíos ata que se aprobe o procedemento e se verifique a recepción segura das notificacións.</p>
+    <p>Déixanos un medio de contacto e a ANPA poderá responderche para falar en privado. <strong>Non precisas explicar o motivo aquí</strong>: os detalles trataranse despois, pola canle que acordemos contigo.</p>
     <form name="atencion-familias" method="POST" action="/__forms.html" aria-label="Solicitude de conversa privada coa ANPA">
       <input type="hidden" name="form-name" value="atencion-familias">
       <p class="hp-field" aria-hidden="true"><label>Deixar baleiro<input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
-      <fieldset disabled aria-describedby="estado-atencion-familias">
+      <fieldset aria-describedby="estado-atencion-familias">
         <label>Nome ou como queres que nos dirixamos a ti (opcional)
           <input type="text" name="nome" autocomplete="name" maxlength="90" placeholder="Como podemos chamarte?">
         </label>
@@ -186,12 +186,12 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
           <input type="tel" name="telefono" autocomplete="tel" maxlength="30" placeholder="Só se queres que te chamemos">
         </label>
         <label>Como prefires que contactemos?
-          <select name="preferencia"><option value="correo">Por correo electrónico</option><option value="telefono">Por teléfono (se o indicaste)</option></select>
+          <select name="preferencia" id="preferenciaAtencionFamilias"><option value="correo">Por correo electrónico</option><option value="telefono">Por teléfono</option></select>
         </label>
         <label class="form-consent"><input type="checkbox" name="informacion_privacidade" value="lin-e-solicito-contacto" required><span>Lin a <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">información de privacidade</a> e solicito que a ANPA contacte comigo para concertar unha conversa.</span></label>
       </fieldset>
-      <button class="btn primary" type="submit" disabled>Canle en preparación</button>
-      <p class="form-status" id="estado-atencion-familias" role="status" aria-live="polite">Os envíos aínda non están habilitados. A ANPA anunciará a activación desta canle cando estea preparada.</p>
+      <button class="btn primary" type="submit">Solicitar unha conversa privada ↗</button>
+      <p class="form-status" id="estado-atencion-familias" role="status" aria-live="polite">A solicitude é privada e non se publica na web. A ANPA responderá cando poida; non é unha canle de emerxencias.</p>
     </form>
   </div>
 </div></section>
@@ -245,7 +245,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 </main>
 <footer class="footer"><div class="container foot-row"><div><strong>O Castiñeiro</strong><small>Asociación de familias · CEIP Eladia Mariño · Cabanas</small></div><div><small>Falamos · Escoitamos · Facemos</small><small>Prototipo para debater · Identidade e funcionamento non aprobados</small></div><div class="footer-social" aria-label="Redes sociais da ANPA"><span>Síguenos nas redes</span><div class="social-links"><a href="https://www.facebook.com/anpaocastineiro/" target="_blank" rel="noopener noreferrer" aria-label="Facebook da ANPA O Castiñeiro (abre nunha nova lapela)" title="Facebook"><svg viewBox="0 0 24 24" width="23" height="23" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.562 9.877v-6.99H7.898V12h2.54V9.797c0-2.506 1.493-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562V12h2.773l-.443 2.887h-2.33v6.99A10.002 10.002 0 0 0 22 12Z"/></svg></a><a href="https://www.instagram.com/anpa_o_castineiro/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da ANPA O Castiñeiro (abre nunha nova lapela)" title="Instagram"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></div></div></div></footer>
 <div class="wa" id="waContainer"><div class="wa-panel" id="waPanel" role="region" aria-label="Opcións de WhatsApp"><h3>Falamos?</h3><p>O número oficial e as ligazóns dos grupos aínda non están configurados. Aquí podes coñecer como funcionarían.</p><button type="button" id="waTalk">Contactar coa ANPA ↗</button><button type="button" id="waGroups">Grupos de traballo ↗</button></div><button class="wa-btn" type="button" id="waToggle" aria-controls="waPanel" aria-expanded="false" aria-label="Abrir as opcións de WhatsApp"><svg class="icon"><use href="#ic-whatsapp"/></svg></button></div>
-<!-- Esquemas estáticos de Netlify Forms en /__forms.html. A canle atencion-familias está desactivada. -->
+<!-- Esquemas estáticos de Netlify Forms en /__forms.html. -->
 <div class="overlay" id="overlay" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="dialogHeading"><button class="modal-close" type="button" id="dialogClose" aria-label="Pechar">×</button><h2 id="dialogHeading"></h2><div id="dialogBody"></div></div></div>
 <script>
 (()=>{'use strict';
@@ -265,13 +265,20 @@ async function submitANPAForm(form){
   const response=await fetch('/__forms.html',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString(),redirect:'follow'});
   if(!response.ok)throw Error('O servidor rexeitou o formulario (HTTP '+response.status+')');
   form.reset();
-  status.textContent='Solicitude recibida. Grazas! A ANPA revisará a mensaxe.';
+  status.textContent=form.name==='atencion-familias'?'Solicitude enviada. Grazas! A ANPA contactará contigo para falar en privado.':'Solicitude recibida. Grazas! A ANPA revisará a mensaxe.';
  }catch(error){
   status.textContent='Non se puido completar o envío. Proba de novo ou escribe a anpa.o.castineiro@gmail.com.'; console.warn('Erro ao enviar o formulario da ANPA:',error);
  }finally{button.disabled=false;}
 }
 const privateContactForm=document.forms['atencion-familias'];
-if(privateContactForm)privateContactForm.addEventListener('submit',event=>{event.preventDefault();if(!privateContactForm.querySelector('button[type="submit"]').disabled)submitANPAForm(privateContactForm)});
+if(privateContactForm){
+ const privatePhone=privateContactForm.elements.namedItem('telefono');
+ const privatePreference=privateContactForm.elements.namedItem('preferencia');
+ function syncPrivatePhone(){if(privatePhone&&privatePreference)privatePhone.required=privatePreference.value==='telefono'}
+ if(privatePreference)privatePreference.addEventListener('change',syncPrivatePhone);
+ syncPrivatePhone();
+ privateContactForm.addEventListener('submit',event=>{event.preventDefault();submitANPAForm(privateContactForm)});
+}
 const membershipForm=document.forms['alta-socias'];
 if(membershipForm)membershipForm.addEventListener('submit',event=>{event.preventDefault();submitANPAForm(membershipForm)});
 function makeModalForm(kind){
