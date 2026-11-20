@@ -112,8 +112,19 @@ collections:
     slug: "{{slug}}"
     identifier_field: "titulo"
     fields:
-      - {label: "Que fai falta?", name: "titulo", widget: "string"}
-      - {label: "Que habería que facer?", name: "descripcion", widget: "text"}
+      - {label: "Título", name: "titulo", widget: "string", hint: "Unha chamada próxima e concreta. Ex.: Botámoslle unha man ao vimbio da horta?"}
+      - label: "Tipo de publicación"
+        name: "tipo"
+        widget: "select"
+        default: "actividade_puntual"
+        options:
+          - {label: "Actividade puntual", value: "actividade_puntual"}
+          - {label: "Chamada a colaboración", value: "chamada_colaboracion"}
+          - {label: "Iniciativa que precisa axuda", value: "iniciativa"}
+          - {label: "Encontro para colaborar", value: "encontro"}
+          - {label: "Outra colaboración", value: "outra"}
+      - {label: "Descrición pública breve", name: "descripcion", widget: "text", hint: "Explica que se necesita e como se pode colaborar; esta información aparece na tarxeta e na ficha."}
+      - {label: "Información ampliada (opcional)", name: "detalle", widget: "text", required: false, hint: "Contexto, tarefas e indicacións útiles. Aparecerá ao abrir Ver detalles."}
       - {label: "Fotografía da tarefa (opcional)", name: "imaxe", widget: "image", required: false, hint: "Fotografía propia con autorización. Evita imaxes que permitan identificar menores ou outras persoas sen permiso."}
       - {label: "Descrición da fotografía (accesibilidade)", name: "imaxe_alt", widget: "string", required: false, hint: "Ex.: Túnel de vimbio medrado na horta do colexio."}
       - {label: "Tempo estimado", name: "tempo", widget: "string", required: false, hint: "Ex.: 30 minutos, 1 tarde"}
@@ -121,6 +132,9 @@ collections:
       - {label: "Hora de comezo (HH:MM)", name: "hora", widget: "string", required: false, hint: "Formato de 24 horas. Ex.: 16:30"}
       - {label: "Hora de remate (HH:MM, opcional)", name: "hora_fin", widget: "string", required: false, hint: "Ex.: 18:00. Se non a sabes, deixa este campo baleiro."}
       - {label: "Lugar ou modalidade", name: "lugar", widget: "string", required: false, hint: "Ex.: Desde a casa"}
+      - {label: "Cantas persoas fan falta? (opcional)", name: "persoas", widget: "string", required: false, hint: "Ex.: 3 ou 4 familias. Deixa baleiro se non hai un máximo."}
+      - {label: "Cómpre traer algo? (opcional)", name: "material", widget: "text", required: false, hint: "Só material confirmado: luvas, tesoiras, etc."}
+      - {label: "Data e hora confirmadas", name: "data_confirmada", widget: "boolean", default: false, hint: "Se está desmarcado, a web indicará que o horario é orientativo. Marca só cando estea acordado."}
       - label: "Estado"
         name: "estado"
         widget: "select"
