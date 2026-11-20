@@ -114,6 +114,8 @@ collections:
     fields:
       - {label: "Que fai falta?", name: "titulo", widget: "string"}
       - {label: "Que habería que facer?", name: "descripcion", widget: "text"}
+      - {label: "Fotografía da tarefa (opcional)", name: "imaxe", widget: "image", required: false, hint: "Fotografía propia con autorización. Evita imaxes que permitan identificar menores ou outras persoas sen permiso."}
+      - {label: "Descrición da fotografía (accesibilidade)", name: "imaxe_alt", widget: "string", required: false, hint: "Ex.: Túnel de vimbio medrado na horta do colexio."}
       - {label: "Tempo estimado", name: "tempo", widget: "string", required: false, hint: "Ex.: 30 minutos, 1 tarde"}
       - {label: "Data", name: "data", widget: "datetime", required: false, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false}
       - {label: "Lugar ou modalidade", name: "lugar", widget: "string", required: false, hint: "Ex.: Desde a casa"}
