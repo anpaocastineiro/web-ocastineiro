@@ -356,7 +356,7 @@ fetch('/content/axudas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('
  const frag=document.createDocumentFragment();
  for(const task of items.slice(0,9)){
   const card=document.createElement('article');card.className='help-card';
-  if(typeof task.imaxe==='string'&&/^\/assets\/uploads\/[a-zA-Z0-9._/%-]+\.(?:jpe?g|png|webp|gif)$/i.test(task.imaxe)){
+  if(typeof task.imaxe==='string'&&task.imaxe.startsWith('/assets/uploads/')&&!task.imaxe.includes('../')&&!task.imaxe.includes('\\')&&/\.(?:jpe?g|png|webp|gif)$/i.test(task.imaxe)){
    const photo=document.createElement('img');photo.className='help-image';photo.src=task.imaxe;photo.alt=typeof task.imaxe_alt==='string'&&task.imaxe_alt.trim()?task.imaxe_alt.trim():'Fotografía da tarefa: '+task.titulo;photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',()=>photo.remove());card.append(photo);
   }
   const h=document.createElement('h4');h.textContent=task.titulo;card.append(h);
