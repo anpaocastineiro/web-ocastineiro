@@ -89,6 +89,32 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 .modal form .form-consent input{width:18px;min-width:18px;height:18px;margin:1px 0;padding:0;accent-color:var(--green)}
 .modal .form-help{background:var(--mint);padding:10px 12px;font-size:13px}
 .modal .form-status{margin:12px 0 0}
+
+/* Falamos en privado · solicitude mínima de contacto (pendente de activación) */
+.private-access{margin:17px 0 0;padding:15px 18px;background:var(--mint);border-left:5px solid var(--green);font-size:14px;line-height:1.5}
+.private-access a{font-weight:900;color:var(--green);text-underline-offset:4px}
+.private-contact{background:#E3EDE2}
+.private-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:42px;align-items:start}
+.private-intro h2{font:900 clamp(43px,5vw,69px)/.98 var(--serif);letter-spacing:-.055em;color:var(--green);margin:15px 0 22px}
+.private-intro>p{font-size:17px;line-height:1.55;max-width:570px}
+.private-guidance{background:var(--paper);border-left:5px solid var(--green);padding:17px 20px;margin:24px 0;font-size:14px;line-height:1.55}
+.private-guidance strong{display:block;margin-bottom:5px;color:var(--green)}
+.private-form-panel{background:var(--paper);border:2px solid var(--green);box-shadow:8px 8px 0 var(--green);padding:27px}
+.private-form-panel h3{font:900 clamp(28px,3.1vw,37px)/1.04 var(--serif);letter-spacing:-.04em;color:var(--green);margin:0 0 11px}
+.private-form-panel>p{font-size:14px;line-height:1.5}
+.private-form-panel form{display:grid;gap:15px}
+.private-form-panel fieldset{border:0;margin:0;padding:0;display:grid;gap:13px;min-width:0}
+.private-form-panel label{display:grid;gap:6px;font-size:13px;font-weight:800;color:var(--green)}
+.private-form-panel input:not([type=checkbox]),.private-form-panel select{width:100%;padding:12px;border:1.5px solid var(--green);background:white;min-height:46px;font:inherit;font-size:15px}
+.private-form-panel fieldset:disabled input,.private-form-panel fieldset:disabled select{opacity:.7;cursor:not-allowed}
+.private-form-panel .form-consent{display:flex;gap:10px;align-items:flex-start;font-weight:500;line-height:1.45}
+.private-form-panel .form-consent input{width:20px;height:20px;min-width:20px;margin:1px 0;accent-color:var(--green)}
+.private-form-panel .form-consent span{min-width:0;flex:1}
+.private-form-panel .form-consent a{color:var(--green);text-decoration:underline}
+.private-form-panel button[disabled]{width:100%;background:#45685E;color:white;opacity:.8;cursor:not-allowed}
+.private-form-panel .form-status{font-size:13px;font-weight:800;line-height:1.5;color:var(--green);margin:0}
+@media(max-width:850px){.private-layout{grid-template-columns:1fr;gap:20px}.private-form-panel{padding:22px;box-shadow:5px 5px 0 var(--green)}}
+@media(max-width:600px){.private-intro h2{font-size:43px}.private-form-panel{padding:20px}}
 </style>
 </head>
 <body>
@@ -132,7 +158,42 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
   <a class="action pink riso" href="#encontros"><span class="action-body"><h2>Encontros<br>abertos</h2><p>Un lugar para falar, escoitar e construír propostas coas familias.</p><span class="action-link">Como funcionarían ↗</span></span><span class="art" aria-hidden="true"><svg class="icon"><use href="#ic-megaphone"/></svg></span></a>
   <button class="action yellow riso" data-open="idea" type="button" style="text-align:left"><span class="action-body"><h2>Tes unha<br>idea?</h2><p>Propón actividades, melloras ou asuntos para debater.</p><span class="action-link">Compártea ↗</span></span><span class="art" aria-hidden="true"><svg class="icon"><use href="#ic-bulb"/></svg></span></button>
   <a class="action mint riso" href="#grupos"><span class="action-body"><h2>Podo botar<br>unha man?</h2><p>Colabora nalgunha tarefa, por pequena que sexa.</p><span class="action-link">Ver posibilidades ↗</span></span><span class="art" aria-hidden="true"><svg class="icon"><use href="#ic-hand"/></svg></span></a>
- </div><p class="minor" style="margin:15px 0 0">Este sitio é unha proposta para debater na ANPA. Os grupos e os procesos descritos non están anunciados como xa operativos.</p>
+ </div><p class="private-access">Hai algunha situación que prefires tratar sen expoñela publicamente? <a href="#falamos-en-privado">Coñece «Falamos en privado» ↗</a></p><p class="minor" style="margin:15px 0 0">Este sitio é unha proposta para debater na ANPA. Os grupos e os procesos descritos non están anunciados como xa operativos.</p>
+</div></section>
+
+<section class="section private-contact" id="falamos-en-privado" aria-labelledby="private-heading"><div class="container private-layout">
+  <div class="private-intro">
+    <span class="overline">Atención ás familias · Espazo privado</span>
+    <h2 id="private-heading">Hai algo que che preocupa? Falamos.</h2>
+    <p>Se queres tratar unha situación delicada relacionada coa escola ou coa ANPA, non tes que expoñela nunha asemblea nin nun grupo de mensaxería. Queremos ofrecerche un primeiro contacto discreto para escoitarte e valorar contigo como podemos axudar.</p>
+    <div class="private-guidance"><strong>Non é preciso contar aquí o que pasou.</strong> Este espazo está pensado unicamente para solicitar unha conversa. Non inclúas nomes de menores, información de saúde, acusacións nin outros detalles persoais no primeiro contacto.</div>
+    <p class="minor">A ANPA non substitúe os servizos de emerxencia nin os protocolos de protección da infancia. Se existe unha situación urxente ou un posible risco para unha crianza, utiliza as canles de protección correspondentes sen agardar pola resposta da ANPA.</p>
+  </div>
+  <div class="private-form-panel">
+    <h3>Solicita unha conversa privada</h3>
+    <p>Este é o formulario previsto para a canle de atención ás familias. <strong>Aínda está en preparación</strong>: non admite envíos ata que se aprobe o procedemento e se verifique a recepción segura das notificacións.</p>
+    <form name="atencion-familias" method="POST" action="/__forms.html" aria-label="Solicitude de conversa privada coa ANPA">
+      <input type="hidden" name="form-name" value="atencion-familias">
+      <p class="hp-field" aria-hidden="true"><label>Deixar baleiro<input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
+      <fieldset disabled aria-describedby="estado-atencion-familias">
+        <label>Nome ou como queres que nos dirixamos a ti (opcional)
+          <input type="text" name="nome" autocomplete="name" maxlength="90" placeholder="Como podemos chamarte?">
+        </label>
+        <label>Correo electrónico
+          <input type="email" name="email" autocomplete="email" maxlength="180" required placeholder="correo@exemplo.gal">
+        </label>
+        <label>Teléfono (opcional)
+          <input type="tel" name="telefono" autocomplete="tel" maxlength="30" placeholder="Só se queres que te chamemos">
+        </label>
+        <label>Como prefires que contactemos?
+          <select name="preferencia"><option value="correo">Por correo electrónico</option><option value="telefono">Por teléfono (se o indicaste)</option></select>
+        </label>
+        <label class="form-consent"><input type="checkbox" name="informacion_privacidade" value="lin-e-solicito-contacto" required><span>Lin a <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">información de privacidade</a> e solicito que a ANPA contacte comigo para concertar unha conversa.</span></label>
+      </fieldset>
+      <button class="btn primary" type="submit" disabled>Canle en preparación</button>
+      <p class="form-status" id="estado-atencion-familias" role="status" aria-live="polite">Os envíos aínda non están habilitados. A ANPA anunciará a activación desta canle cando estea preparada.</p>
+    </form>
+  </div>
 </div></section>
 <section class="section alternate paper" id="encontros"><div class="container">
  <div class="section-head"><div><span class="overline">01 · Encontros abertos</span><h2>E se nos sentamos a falar?</h2></div><p>Un espazo para preguntar, escoitar outras familias e pensar xuntas. Sen necesidade de estar todas de acordo.</p></div>
@@ -184,7 +245,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 </main>
 <footer class="footer"><div class="container foot-row"><div><strong>O Castiñeiro</strong><small>Asociación de familias · CEIP Eladia Mariño · Cabanas</small></div><div><small>Falamos · Escoitamos · Facemos</small><small>Prototipo para debater · Identidade e funcionamento non aprobados</small></div><div class="footer-social" aria-label="Redes sociais da ANPA"><span>Síguenos nas redes</span><div class="social-links"><a href="https://www.facebook.com/anpaocastineiro/" target="_blank" rel="noopener noreferrer" aria-label="Facebook da ANPA O Castiñeiro (abre nunha nova lapela)" title="Facebook"><svg viewBox="0 0 24 24" width="23" height="23" fill="currentColor" aria-hidden="true"><path d="M22 12a10 10 0 1 0-11.562 9.877v-6.99H7.898V12h2.54V9.797c0-2.506 1.493-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.242 0-1.63.771-1.63 1.562V12h2.773l-.443 2.887h-2.33v6.99A10.002 10.002 0 0 0 22 12Z"/></svg></a><a href="https://www.instagram.com/anpa_o_castineiro/" target="_blank" rel="noopener noreferrer" aria-label="Instagram da ANPA O Castiñeiro (abre nunha nova lapela)" title="Instagram"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.7" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg></a></div></div></div></footer>
 <div class="wa" id="waContainer"><div class="wa-panel" id="waPanel" role="region" aria-label="Opcións de WhatsApp"><h3>Falamos?</h3><p>O número oficial e as ligazóns dos grupos aínda non están configurados. Aquí podes coñecer como funcionarían.</p><button type="button" id="waTalk">Contactar coa ANPA ↗</button><button type="button" id="waGroups">Grupos de traballo ↗</button></div><button class="wa-btn" type="button" id="waToggle" aria-controls="waPanel" aria-expanded="false" aria-label="Abrir as opcións de WhatsApp"><svg class="icon"><use href="#ic-whatsapp"/></svg></button></div>
-<!-- Os tres esquemas estáticos de Netlify Forms están en /__forms.html. -->
+<!-- Esquemas estáticos de Netlify Forms en /__forms.html. A canle atencion-familias está desactivada. -->
 <div class="overlay" id="overlay" aria-hidden="true"><div class="modal" role="dialog" aria-modal="true" aria-labelledby="dialogHeading"><button class="modal-close" type="button" id="dialogClose" aria-label="Pechar">×</button><h2 id="dialogHeading"></h2><div id="dialogBody"></div></div></div>
 <script>
 (()=>{'use strict';
@@ -209,6 +270,8 @@ async function submitANPAForm(form){
   status.textContent='Non se puido completar o envío. Proba de novo ou escribe a anpa.o.castineiro@gmail.com.'; console.warn('Erro ao enviar o formulario da ANPA:',error);
  }finally{button.disabled=false;}
 }
+const privateContactForm=document.forms['atencion-familias'];
+if(privateContactForm)privateContactForm.addEventListener('submit',event=>{event.preventDefault();if(!privateContactForm.querySelector('button[type="submit"]').disabled)submitANPAForm(privateContactForm)});
 const membershipForm=document.forms['alta-socias'];
 if(membershipForm)membershipForm.addEventListener('submit',event=>{event.preventDefault();submitANPAForm(membershipForm)});
 function makeModalForm(kind){
