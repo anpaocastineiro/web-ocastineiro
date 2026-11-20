@@ -51,7 +51,7 @@ O código e os contidos públicos están versionados no GitHub da ANPA. Se un ca
 
 ## Recepción de formularios en Netlify
 
-A web dispón de tres formularios de uso ordinario: `alta-socias`, `propostas-familias` e `ideas-crianzas`. O cuarto, `atencion-familias` («Falamos en privado»), está preparado no código, pero **desactivado para as persoas visitantes** ata validar o protocolo de atención e a privacidade.
+A web dispón de tres formularios de uso ordinario: `alta-socias`, `propostas-familias` e `ideas-crianzas`. O cuarto, `atencion-familias` («Falamos en privado»), **está habilitado na web** unicamente para solicitar datos mínimos de contacto, sen un campo de mensaxe libre. Recoméndase aprobar o protocolo de atención e limitar os permisos de acceso antes de atender casos reais.
 
 **Configuración necesaria no panel de Netlify (non se pode facer só desde GitHub):**
 
@@ -70,14 +70,14 @@ A web dispón de tres formularios de uso ordinario: `alta-socias`, `propostas-fa
 
 
 ## Falamos en privado · preparación e activación
-A portada inclúe a sección `#falamos-en-privado` e unha ligazón desde Participa. A finalidade é **pedir un contacto privado**, non recibir relatos de incidencias ou datos sensibles. O formulario `atencion-familias` está definido en `__forms.html` para a detección de Netlify, pero o seu `fieldset` e o botón de envío están desactivados na portada.
+A portada inclúe a sección `#falamos-en-privado` e unha ligazón desde Participa. A finalidade é **pedir un contacto privado**, non recibir relatos de incidencias ou datos sensibles. O formulario `atencion-familias` está definido en `__forms.html` para a detección de Netlify e está habilitado na portada.
 
-**Non activar ata completar:**
+**Tarefas de configuración e funcionamento:**
 1. Aprobar o protocolo de atención ás familias e designar as persoas que recibirán solicitudes e as substitutas en caso de conflito de intereses.
 2. Validar a información legal de `privacidade.html`: finalidade, base xurídica, acceso, terceiros provedores, prazos de conservación e exercicio de dereitos.
 3. Revisar os permisos de Netlify Forms e a conta de Gmail; non reenviar automaticamente solicitudes a persoas non autorizadas.
 4. En Netlify → Forms → Submission notifications, crear/verificar unha notificación **específica do formulario `atencion-familias`** a `anpa.o.castineiro@gmail.com`. Este paso require acceso ao panel de Netlify; un commit en GitHub non o configura.
-5. Cando estea validado, retirar `disabled` do `fieldset` e do botón, modificar os textos de «canle en preparación», realizar un novo despregamento e facer unha proba con datos totalmente ficticios.
+5. A sección xa está habilitada na interface; comprobar que o novo deploy inclúe este cambio e probar o envío só con datos ficticios.
 6. Comprobar que o formulario chega a Netlify Forms e ao Gmail autorizado. Non empregar casos reais para as probas.
 
 **Seguridade:** non incorporar unha caixa de mensaxe libre, non gardar información de familias en GitHub e non publicar os envíos en Decap CMS.
