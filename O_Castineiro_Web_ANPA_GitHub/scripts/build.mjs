@@ -14,7 +14,7 @@ await writeFile(path.join(out,'content','ideas.json'),JSON.stringify({items},nul
 await writeFile(path.join(out,'content','actualidade.json'),JSON.stringify({novas,axenda},null,2)+'\n');
 const axudas=(await readItems('axudas')).filter(x=>x.estado==='aberta'&&typeof x.titulo==='string'&&x.titulo.trim());
 axudas.sort((a,b)=>String(a.data||'9999').localeCompare(String(b.data||'9999')));
-await writeFile(path.join(out,'content','axudas.json'),JSON.stringify({items:axudas.map(({titulo,descripcion,tempo,data,lugar,imaxe,imaxe_alt})=>({titulo,descripcion,tempo,data,lugar,imaxe:typeof imaxe==='string'&&/^\/assets\/uploads\/[a-zA-Z0-9._/%-]+\.(?:jpe?g|png|webp|gif)$/i.test(imaxe)?imaxe:'',imaxe_alt:typeof imaxe_alt==='string'?imaxe_alt:'',estado:'aberta',publicado:true}))},null,2)+'\n');
+await writeFile(path.join(out,'content','axudas.json'),JSON.stringify({items:axudas.map(({titulo,descripcion,tempo,data,lugar,imaxe,imaxe_alt})=>({titulo,descripcion,tempo,data,lugar,imaxe:typeof imaxe==='string'&&imaxe.startsWith('/assets/uploads/')&&!imaxe.includes('../')&&!imaxe.includes('\\')&&/\.(?:jpe?g|png|webp|gif)$/i.test(imaxe)?imaxe:'',imaxe_alt:typeof imaxe_alt==='string'?imaxe_alt:'',estado:'aberta',publicado:true}))},null,2)+'\n');
 const categoriasTransparencia=new Set(['actas','propostas','convocatorias','contas']);
 const transparencia=(await readItems('transparencia')).filter(x=>categoriasTransparencia.has(x.categoria)&&typeof x.titulo==='string');
 transparencia.sort((a,b)=>String(b.data||'').localeCompare(String(a.data||'')));
