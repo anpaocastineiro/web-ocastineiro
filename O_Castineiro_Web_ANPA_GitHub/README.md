@@ -94,3 +94,11 @@ Cada envío leva un asunto específico (establecido nos formularios HTML, non mo
 Estes asuntos serven para identificar a orixe no Gmail da ANPA e crear filtros de Gmail por `subject:`; **os filtros non se crean automaticamente con este código**. Non alterar o campo `subject` sen actualizar tamén o esquema estático en `__forms.html` e volver despregar.
 
 Hai un acceso directo a `#falamos-en-privado` no menú principal e, en pantalla pequena, dentro do menú despregable. As solicitudes privadas só recollen datos de contacto, sen relato libre.
+
+
+## Bota unha man · tarefas concretas
+Desde `/admin/` → **Bota unha man · axudas concretas** pódense engadir, editar e pechar peticións de colaboración: título, descrición, tempo estimado, data e lugar opcionais.
+- Só aparecen na web tarefas con `publicado: true` e `estado: aberta`. Cambiar a `cuberta` ou `pechada` retíraas no seguinte despregamento.
+- Por defecto non hai tarefas públicas inventadas. Pódese ofrecer colaboración espontánea cun formulario breve.
+- Os envíos van polo formulario xa existente `propostas-familias`, co asunto `[WEB ANPA] Bota unha man`; non é necesario configurar unha nova notificación de Netlify.
+- **GitHub é público**, incluso os borradores: nunca introducir datos identificativos de familias, menores ou persoas voluntarias nas tarefas do CMS.
