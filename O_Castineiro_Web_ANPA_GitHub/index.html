@@ -56,7 +56,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 
 /* A ANPA / Quen somos */
 .about-intro{background:#E3EDE2;border:1px solid rgba(15,61,50,.26);display:grid;grid-template-columns:1fr 190px;gap:20px;align-items:center;padding:25px 30px;margin-bottom:16px;overflow:hidden}.about-intro h3{font-size:clamp(32px,4vw,49px);line-height:1.02;letter-spacing:-.05em;color:var(--green);margin:10px 0}.about-intro p{max-width:680px;font-size:15px;line-height:1.55}.about-intro img{width:180px;height:165px;object-fit:contain;transform:rotate(-10deg)}.about-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.about-card{border:1px solid rgba(15,61,50,.27);background:var(--paper);padding:23px;display:flex;flex-direction:column;align-items:flex-start;min-height:265px}.about-card:nth-child(2){background:#F2E0E8}.about-card:nth-child(3){background:#F3DBA4}.about-n{font:900 13px var(--sans);letter-spacing:.12em;color:var(--green)}.about-card h3{font:900 clamp(24px,2.5vw,32px)/1.03 var(--serif);letter-spacing:-.04em;color:var(--green);margin:20px 0 10px}.about-card p{font-size:14px;line-height:1.5}.about-card .text-action{margin-top:auto;text-decoration:none;padding-top:15px}.about-note{margin-top:15px}
-@media(max-width:1120px){.header-content{min-height:77px}.hamburger{display:block}.header-content{flex-wrap:wrap}.nav{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;background:var(--paper);padding:19px;box-shadow:0 7px 14px #093f3024;border-bottom:2px solid var(--green);flex-direction:column;align-items:stretch;gap:11px}.nav.open{display:flex}.nav>a{padding:11px!important}.nav>a.btn{justify-content:center}}
+@media(max-width:1250px){.header-content{min-height:77px}.hamburger{display:block}.header-content{flex-wrap:wrap}.nav{display:none;position:absolute;top:calc(100% + 1px);left:0;right:0;background:var(--paper);padding:19px;box-shadow:0 7px 14px #093f3024;border-bottom:2px solid var(--green);flex-direction:column;align-items:stretch;gap:11px}.nav.open{display:flex}.nav>a{padding:11px!important}.nav>a.btn{justify-content:center}}
 @media(max-width:860px){.about-grid{grid-template-columns:1fr 1fr}.about-card:last-child{grid-column:1/-1}.about-intro{grid-template-columns:1fr 130px}.about-intro img{width:130px}}
 @media(max-width:600px){.about-grid{grid-template-columns:1fr}.about-card:last-child{grid-column:auto}.about-intro{grid-template-columns:1fr;padding:22px}.about-intro img{display:none}}
 
@@ -115,6 +115,11 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 .private-form-panel .form-status{font-size:13px;font-weight:800;line-height:1.5;color:var(--green);margin:0}
 @media(max-width:850px){.private-layout{grid-template-columns:1fr;gap:20px}.private-form-panel{padding:22px;box-shadow:5px 5px 0 var(--green)}}
 @media(max-width:600px){.private-intro h2{font-size:43px}.private-form-panel{padding:20px}}
+
+/* Acceso directo, destacado con discreción, á canle de atención privada */
+.nav>a.nav-private:not(.btn){background:var(--mint);color:var(--green);border:1px solid rgba(15,61,50,.24);border-radius:4px;padding:8px 11px;white-space:nowrap}
+.nav>a.nav-private:not(.btn):hover,.nav>a.nav-private:not(.btn):focus-visible{background:#C8E0CE;border-color:var(--green)}
+@media(min-width:1251px){.nav{gap:clamp(8px,.85vw,14px)}.nav>a:not(.btn){font-size:12px}}
 </style>
 </head>
 <body>
@@ -135,7 +140,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 <header class="header" id="inicio"><div class="container header-content">
  <a class="brand" href="#inicio" aria-label="O Castiñeiro, ir ao inicio"><img class="brand-symbol" src="assets/castineiro.webp" alt=""/><span><span class="brand-name">O Castiñeiro</span><span class="brand-descr">ASOCIACIÓN DE FAMILIAS</span></span></a>
  <button class="hamburger" id="menuButton" type="button" aria-controls="mainNavigation" aria-expanded="false">☰ Menú</button>
- <nav class="nav" id="mainNavigation" aria-label="Navegación principal"><a href="#anpa">A ANPA</a><a href="#participa">Participa</a><a href="#encontros">Encontros</a><a href="#ideas">Ideas en marcha</a><a href="#grupos">Grupos</a><a href="#crianzas">As crianzas</a><a href="#transparencia">Transparencia</a><a href="#socias" class="btn primary small">Faite socia ↗</a></nav>
+ <nav class="nav" id="mainNavigation" aria-label="Navegación principal"><a href="#anpa">A ANPA</a><a href="#participa">Participa</a><a href="#encontros">Encontros</a><a href="#ideas">Ideas en marcha</a><a href="#grupos">Grupos</a><a href="#crianzas">As crianzas</a><a href="#transparencia">Transparencia</a><a href="#falamos-en-privado" class="nav-private">Falamos en privado</a><a href="#socias" class="btn primary small">Faite socia ↗</a></nav>
 </div></header>
 <main>
 <section class="hero paper" aria-labelledby="hero-heading"><div class="container hero-main">
@@ -174,6 +179,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
     <p>Déixanos un medio de contacto e a ANPA poderá responderche para falar en privado. <strong>Non precisas explicar o motivo aquí</strong>: os detalles trataranse despois, pola canle que acordemos contigo.</p>
     <form name="atencion-familias" method="POST" action="/__forms.html" aria-label="Solicitude de conversa privada coa ANPA">
       <input type="hidden" name="form-name" value="atencion-familias">
+      <input type="hidden" name="subject" value="[WEB ANPA] Conversa privada">
       <p class="hp-field" aria-hidden="true"><label>Deixar baleiro<input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
       <fieldset aria-describedby="estado-atencion-familias">
         <label>Nome ou como queres que nos dirixamos a ti (opcional)
@@ -231,6 +237,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 <div class="socias-form-shell"><span class="overline">Alta de socias</span><h3>Queremos contar contigo.</h3><p>Solicita a alta como persoa socia. A ANPA contactará contigo para confirmar os seguintes pasos.</p>
 <form name="alta-socias" method="POST" action="/__forms.html" aria-label="Solicitude de alta na ANPA">
 <input type="hidden" name="form-name" value="alta-socias">
+<input type="hidden" name="subject" value="[WEB ANPA] Alta de socia">
 <p class="hp-field" aria-hidden="true"><label>Deixar baleiro<input type="text" name="bot-field" tabindex="-1" autocomplete="off"></label></p>
 <div class="socias-row"><label>Nome<input name="nome" autocomplete="given-name" required maxlength="90" placeholder="O teu nome"></label><label>Apelidos<input name="apelidos" autocomplete="family-name" required maxlength="120" placeholder="Os teus apelidos"></label></div>
 <label>Correo electrónico<input name="email" type="email" autocomplete="email" required maxlength="180" placeholder="correo@exemplo.gal"></label>
@@ -285,7 +292,7 @@ function makeModalForm(kind){
  const block=document.createElement('div');
  if(kind==='crianzas'){
   block.innerHTML='<p>Podes contar unha idea para mellorar o cole. Escríbea coas túas palabras. Non fai falta dicir quen es.</p>'+
-  '<form name="ideas-crianzas" method="POST"><input type="hidden" name="form-name" value="ideas-crianzas">'+
+  '<form name="ideas-crianzas" method="POST"><input type="hidden" name="form-name" value="ideas-crianzas"><input type="hidden" name="subject" value="[WEB ANPA] Idea das crianzas">'+
   '<p class="hp-field" aria-hidden="true"><label>Non cubrir<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>'+
   '<label for="temaCrianzas">De que queres falar?</label><select name="tema" id="temaCrianzas" required><option value="">Escolle un tema</option><option>Patio e xogos</option><option>Espazos do cole</option><option>Actividades</option><option>Convivencia</option><option>Outra idea</option></select>'+
   '<label for="mensaxeCrianzas">Que che gustaría propoñer?</label><textarea name="mensaxe" id="mensaxeCrianzas" required maxlength="1200" placeholder="Eu propoño que..."></textarea>'+
@@ -294,7 +301,7 @@ function makeModalForm(kind){
   '<button type="submit" class="btn primary">Enviar a miña idea ↗</button><p class="form-status" role="status" aria-live="polite"></p></form>';
  }else{
   block.innerHTML='<p>Escribe a túa proposta e chegará á ANPA para que poida revisala. Non se publicará automaticamente na web.</p>'+
-  '<form name="propostas-familias" method="POST"><input type="hidden" name="form-name" value="propostas-familias"><input type="hidden" name="tipo" value="'+(kind==='encontro'?'Proposta para encontro':'Idea ou inquedanza')+'">'+
+  '<form name="propostas-familias" method="POST"><input type="hidden" name="form-name" value="propostas-familias"><input type="hidden" name="subject" value="'+(kind==='encontro'?'[WEB ANPA] Tema para encontro':'[WEB ANPA] Proposta dunha familia')+'"><input type="hidden" name="tipo" value="'+(kind==='encontro'?'Proposta para encontro':'Idea ou inquedanza')+'">'+
   '<p class="hp-field" aria-hidden="true"><label>Non cubrir<input name="bot-field" tabindex="-1" autocomplete="off"></label></p>'+
   '<label for="asuntoProposta">Asunto</label><input id="asuntoProposta" name="asunto" maxlength="140" required placeholder="Sobre que che gustaría falar?">'+
   '<label for="mensaxeProposta">Mensaxe</label><textarea id="mensaxeProposta" name="mensaxe" maxlength="2500" required placeholder="Conta a túa idea ou inquedanza, evitando datos persoais doutras persoas..."></textarea>'+
