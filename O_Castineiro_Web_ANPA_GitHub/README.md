@@ -118,3 +118,13 @@ Desde `/admin/` → **Bota unha man · axudas concretas** pódense engadir, edit
 - A tarxeta utiliza cores propias da web: ocre suave para data, rosa suave para hora, menta para lugar e crema para duración. Non se empregan cores de estado enganosas.
 - Se non hai nin data nin hora, a tarxeta indica **Data e hora por concretar**. Non se deben inventar convocatorias: a tarefa do vimbio permanece sen data/hora ata que a ANPA o acorde co centro.
 - Se só se coñece a hora de inicio, non se amosa unha hora de fin. Se existe unha hora final posterior, a web amosa o intervalo.
+
+
+## Publicacións de Bota unha man · tipos e ficha detallada
+- A colección **Bota unha man · axudas concretas** é diferente de **Ideas en marcha**: a primeira publica necesidades ás que as familias se poden apuntar; a segunda documenta propostas e acordos.
+- Tipos permitidos: `actividade_puntual`, `chamada_colaboracion`, `iniciativa`, `encontro`, `outra`. A etiqueta visual depende do tipo e non altera o estado.
+- Cada tarefa admite fotografía, texto alternativo, descrición e **información ampliada**; esta última móstrase na ficha «Ver detalles».
+- Para publicar unha foto, usar a carga de imaxes do CMS e confirmar dereitos e privacidade das persoas fotografadas. Se non se carga, a tarxeta segue sendo funcional.
+- Ademais de data, hora, lugar e duración, pódense indicar **persoas necesarias** e **material para traer**.
+- `data_confirmada: false` significa horario orientativo; o aviso manterase ata que a ANPA marque a confirmación. No caso do vimbio mantense 14/12/2026 ás 16:30 como **proposta**, non como convocatoria aprobada.
+- As respostas envíanse ao formulario existente `propostas-familias`, cun asunto que identifica a tarefa; a ANPA debe confirmar manualmente a inscrición.
