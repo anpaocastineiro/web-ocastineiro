@@ -58,7 +58,7 @@ A web dispón de tres formularios de uso ordinario: `alta-socias`, `propostas-fa
 1. Abrir o proxecto `web-ocastineiro` en Netlify → **Forms** → **Enable form detection** (se aínda non está activada).
 2. Facer un novo **deploy** desde a rama `main` despois de activar a detección. O ficheiro `__forms.html` inclúese en `dist` e contén os tres esquemas estáticos que Netlify debe detectar.
 3. Comprobar que en **Forms → Active forms** aparecen os formularios detectados, incluído `atencion-familias` cando Netlify o procese; a detección por si soa non significa que o formulario estea aberto ao público.
-4. En **Forms → Submission notifications**, engadir unha **Email notification** para todos os formularios, co destino `anpa.o.castineiro@gmail.com`.
+4. En **Forms → Submission notifications**, engadir unha **Email notification** para todos os formularios, co destino `anpa.o.castineiro@gmail.com`. Os asuntos están definidos no HTML mediante un campo oculto `subject`, e teñen prioridade sobre un asunto configurado no panel de Netlify.
 5. Se Netlify envía un correo de confirmación ao destinatario, abrilo desde a conta da ANPA e confirmar a notificación.
 6. Probar cada formulario con datos ficticios e comprobar a chegada á sección Forms e ao Gmail da ANPA; revisar a bandexa de spam de Netlify se faltan probas.
 
@@ -81,3 +81,16 @@ A portada inclúe a sección `#falamos-en-privado` e unha ligazón desde Partici
 6. Comprobar que o formulario chega a Netlify Forms e ao Gmail autorizado. Non empregar casos reais para as probas.
 
 **Seguridade:** non incorporar unha caixa de mensaxe libre, non gardar información de familias en GitHub e non publicar os envíos en Decap CMS.
+
+
+## Identificación de formularios no correo da ANPA
+Cada envío leva un asunto específico (establecido nos formularios HTML, non modificable mediante a configuración xeral do panel):
+- `alta-socias`: **[WEB ANPA] Alta de socia**
+- `propostas-familias` ao usar «Tes unha idea?»: **[WEB ANPA] Proposta dunha familia**
+- `propostas-familias` ao usar «Propoñer un tema para un encontro»: **[WEB ANPA] Tema para encontro**
+- `ideas-crianzas`: **[WEB ANPA] Idea das crianzas**
+- `atencion-familias`: **[WEB ANPA] Conversa privada**
+
+Estes asuntos serven para identificar a orixe no Gmail da ANPA e crear filtros de Gmail por `subject:`; **os filtros non se crean automaticamente con este código**. Non alterar o campo `subject` sen actualizar tamén o esquema estático en `__forms.html` e volver despregar.
+
+Hai un acceso directo a `#falamos-en-privado` no menú principal e, en pantalla pequena, dentro do menú despregable. As solicitudes privadas só recollen datos de contacto, sen relato libre.
