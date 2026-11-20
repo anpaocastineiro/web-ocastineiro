@@ -126,8 +126,8 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 .help-list-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:17px}.help-list-head h3{font:900 clamp(30px,3vw,40px)/1.08 var(--serif);color:var(--green);margin:9px 0 0}.help-list-head p{max-width:300px}
 .help-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .help-card{display:flex;flex-direction:column;gap:12px;background:var(--paper);border:1.5px solid #0f3d3240;border-radius:8px;padding:22px;min-width:0}.help-card:nth-child(3n+2){background:var(--pink-soft)}.help-card:nth-child(3n+3){background:var(--mint)}
-.help-card h4{font:900 27px/1.08 var(--serif);color:var(--green);margin:0}.help-card p{font-size:14px;line-height:1.5;overflow-wrap:anywhere;margin:0}
-.help-meta{display:flex;flex-wrap:wrap;gap:7px}.help-meta span{padding:6px 9px;border:1px solid #0f3d3240;border-radius:4px;font-size:12px;font-weight:800;color:var(--green)}.help-card button{margin-top:auto;align-self:flex-start}
+.help-card h4{font:900 27px/1.08 var(--serif);color:var(--green);margin:0}.help-card .help-image{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:5px;border:1px solid rgba(15,61,50,.22);background:var(--mint);margin-bottom:3px}.help-card .help-caption{font-size:11px;line-height:1.4;color:var(--green);opacity:.83;margin-top:-8px}.help-card p{font-size:14px;line-height:1.5;overflow-wrap:anywhere;margin:0}
+.help-meta{display:flex;flex-wrap:wrap;gap:7px}.help-meta span{padding:6px 9px;border:1px solid #0f3d3240;border-radius:4px;font-size:12px;font-weight:800;color:var(--green)}.help-card button{margin-top:auto;align-self:flex-start}.help-card .btn{width:100%;padding:11px 12px;text-align:center}.help-card{overflow:hidden}
 .help-empty{grid-column:1/-1;border:1.5px dashed #0f3d3275;border-radius:7px;padding:23px;background:var(--paper);line-height:1.5;color:var(--green)}
 .help-note{margin-top:15px}
 @media(max-width:900px){.help-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.help-intro{grid-template-columns:1fr}}
@@ -285,7 +285,7 @@ async function submitANPAForm(form){
   const response=await fetch('/__forms.html',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:new URLSearchParams(new FormData(form)).toString(),redirect:'follow'});
   if(!response.ok)throw Error('O servidor rexeitou o formulario (HTTP '+response.status+')');
   form.reset();
-  status.textContent=form.name==='atencion-familias'?'Solicitude enviada. Grazas! A ANPA contactará contigo para falar en privado.':'Solicitude recibida. Grazas! A ANPA revisará a mensaxe.';
+  status.textContent=form.name==='atencion-familias'?'Solicitude enviada. Grazas! A ANPA contactará contigo para falar en privado.':form.elements.namedItem('tipo')?.value==='Inscrición nunha axuda concreta'?'Solicitude para apuntarte enviada. A ANPA contactarache para confirmar os detalles. Grazas por botar unha man!':'Solicitude recibida. Grazas! A ANPA revisará a mensaxe.';
  }catch(error){
   status.textContent='Non se puido completar o envío. Proba de novo ou escribe a anpa.o.castineiro@gmail.com.'; console.warn('Erro ao enviar o formulario da ANPA:',error);
  }finally{button.disabled=false;}
@@ -323,9 +323,16 @@ function makeModalForm(kind,taskTitle=''){
   '<button type="submit" class="btn primary">Enviar á ANPA ↗</button><p class="form-status" role="status" aria-live="polite"></p></form>';
  }
  if(kind==='axuda'){
-   const subject=block.querySelector('[name="asunto"]');if(subject){subject.value=taskTitle?'Axuda para: '+taskTitle:'Ofrecer colaboración puntual';subject.type='hidden';subject.required=false;block.querySelector('label[for="asuntoProposta"]')?.remove()}
+   const intro=block.querySelector('p');
+   if(intro)intro.textContent=taskTitle?'Déixanos o teu contacto para apuntarte a esta tarefa. A ANPA escribirá para confirmar os detalles; non tes que asumir ningún compromiso permanente.':'Déixanos o teu contacto se che apetece colaborar nalgunha ocasión. A ANPA responderache para ver que che encaixa.';
+   const subject=block.querySelector('[name="asunto"]');if(subject){subject.value=(taskTitle?'Axuda para: '+taskTitle:'Ofrecer colaboración puntual').slice(0,140);subject.type='hidden';subject.required=false;block.querySelector('label[for="asuntoProposta"]')?.remove()}
+   const typeField=block.querySelector('[name="tipo"]');if(typeField)typeField.value=taskTitle?'Inscrición nunha axuda concreta':'Ofrecer colaboración puntual';
+   const nameLabel=document.createElement('label');nameLabel.htmlFor='nomeAxuda';nameLabel.textContent='Nome (opcional)';
+   const nameInput=document.createElement('input');nameInput.id='nomeAxuda';nameInput.name='nome';nameInput.type='text';nameInput.maxLength=90;nameInput.autocomplete='name';nameInput.placeholder='Como queres que te chamemos?';
+   const emailLabel=block.querySelector('label[for="correoProposta"]');if(emailLabel)emailLabel.before(nameLabel,nameInput);
    const email=block.querySelector('[name="email"]');if(email){email.required=true;block.querySelector('label[for="correoProposta"]').textContent='Correo para contactar contigo'}
    const message=block.querySelector('[name="mensaxe"]');if(message){message.required=false;message.placeholder='Cando che viría ben? (opcional)';block.querySelector('label[for="mensaxeProposta"]').textContent='Se queres, engade algún detalle (opcional)'}
+   const submit=block.querySelector('button[type="submit"]');if(submit)submit.textContent=taskTitle?'Solicitar apuntarme ↗':'Ofrecer colaboración ↗';
  }
  dialogBody.appendChild(block);
  const form=block.querySelector('form');
@@ -338,7 +345,7 @@ $$('[data-open]').forEach(el=>el.addEventListener('click',()=>{
 }));
 const names={comunicacion:'Axudar a comunicar',comunidade:'Facer comunidade',educacion:'Compartir ideas sobre a escola'};function openGroup(id){openDialog(names[id]);p('Podes achegar unha idea, unha opinión ou unha axuda puntual. Non tes que vir a reunións nin comprometerte a seguir colaborando.');p('Se non tes tempo agora, tamén está ben. A participación non depende de canto traballo poidas asumir.');const help=document.createElement('button');help.type='button';help.className='btn primary';help.textContent='Quero botar unha man ↗';help.addEventListener('click',()=>{openDialog('Bota unha man, cando poidas');makeModalForm('axuda')});dialogBody.appendChild(help);if(settings.groupInvites[id]){link('Espazo de coordinación en WhatsApp ↗',settings.groupInvites[id]);note('Nese grupo de WhatsApp o teu número podería ser visible para as demais persoas integrantes.')}}$$('[data-group]').forEach(b=>b.addEventListener('click',()=>openGroup(b.dataset.group)));
 // Publicacións autorizadas para a sección de transparencia, xeradas por Decap CMS no build.
-function openHelpForm(taskTitle=''){openDialog(taskTitle?'Axuda para: '+taskTitle:'Bota unha man, cando poidas');makeModalForm('axuda',taskTitle)}
+function openHelpForm(taskTitle=''){openDialog(taskTitle?'Apúntate: '+taskTitle:'Bota unha man, cando poidas');makeModalForm('axuda',taskTitle)}
 const offerHelp=$('#ofrecerAxuda');if(offerHelp)offerHelp.addEventListener('click',()=>openHelpForm());
 const helpGrid=$('#axudasList');
 function showHelpEmpty(text){if(helpGrid){const p=document.createElement('p');p.className='help-empty';p.textContent=text;helpGrid.replaceChildren(p)}}
@@ -349,6 +356,9 @@ fetch('/content/axudas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('
  const frag=document.createDocumentFragment();
  for(const task of items.slice(0,9)){
   const card=document.createElement('article');card.className='help-card';
+  if(typeof task.imaxe==='string'&&/^\/assets\/uploads\/[a-zA-Z0-9._/%-]+\.(?:jpe?g|png|webp|gif)$/i.test(task.imaxe)){
+   const photo=document.createElement('img');photo.className='help-image';photo.src=task.imaxe;photo.alt=typeof task.imaxe_alt==='string'&&task.imaxe_alt.trim()?task.imaxe_alt.trim():'Fotografía da tarefa: '+task.titulo;photo.loading='lazy';photo.decoding='async';photo.addEventListener('error',()=>photo.remove());card.append(photo);
+  }
   const h=document.createElement('h4');h.textContent=task.titulo;card.append(h);
   if(task.descripcion){const p=document.createElement('p');p.textContent=task.descripcion;card.append(p)}
   const meta=document.createElement('div');meta.className='help-meta';
@@ -356,7 +366,7 @@ fetch('/content/axudas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('
    if(value){const span=document.createElement('span');span.textContent=value;meta.append(span)}
   }
   if(meta.childElementCount)card.append(meta);
-  const btn=document.createElement('button');btn.type='button';btn.className='text-action';btn.textContent='Podo botar unha man ↗';btn.addEventListener('click',()=>openHelpForm(task.titulo));card.append(btn);frag.append(card);
+  const btn=document.createElement('button');btn.type='button';btn.className='btn primary';btn.textContent='Quero apuntarme ↗';btn.setAttribute('aria-label','Solicitar apuntarme a: '+task.titulo);btn.addEventListener('click',()=>openHelpForm(task.titulo));card.append(btn);frag.append(card);
  }
  helpGrid.replaceChildren(frag);
 }).catch(()=>showHelpEmpty('Non foi posible consultar as axudas. Podes ofrecer unha colaboración co botón anterior.'));
