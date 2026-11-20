@@ -8,5 +8,10 @@
   "estado": "aberta",
   "publicado": true,
   "data": "2026-12-14",
-  "hora": "16:30"
+  "hora": "16:30",
+  "tipo": "actividade_puntual",
+  "data_confirmada": false,
+  "detalle": "A idea é preparar unha pequena xornada para orientar e trenzar as varas máis flexibles do túnel de vimbio da horta. A intervención concreta confirmarase co centro antes da convocatoria. Non fai falta sumarse a ningún grupo de traballo nin comprometerse noutras tarefas.",
+  "persoas": "",
+  "material": ""
 }
