@@ -102,3 +102,12 @@ Desde `/admin/` → **Bota unha man · axudas concretas** pódense engadir, edit
 - Por defecto non hai tarefas públicas inventadas. Pódese ofrecer colaboración espontánea cun formulario breve.
 - Os envíos van polo formulario xa existente `propostas-familias`, co asunto `[WEB ANPA] Bota unha man`; non é necesario configurar unha nova notificación de Netlify.
 - **GitHub é público**, incluso os borradores: nunca introducir datos identificativos de familias, menores ou persoas voluntarias nas tarefas do CMS.
+
+
+## Axudas con fotografía e inscrición directa
+- Na colección **Bota unha man · axudas concretas** hai un campo **Fotografía da tarefa**, almacenado en `assets/uploads`, e outro para o texto alternativo da imaxe.
+- A fotografía é opcional; a tarxeta conserva o seu deseño se non hai foto. Só se admiten rutas locais de imaxes publicadas en `/assets/uploads/`.
+- Cada tarxeta inclúe **Quero apuntarme**. Abre un formulario xa recoñecido por Netlify (`propostas-familias`), preenche internamente a tarefa e solicita un correo de resposta, con nome e mensaxe opcionais. A ANPA debe confirmar os detalles; non se considera inscrición definitiva ata a súa resposta.
+- Os envíos inclúen `tipo=Inscrición nunha axuda concreta` e `asunto=Axuda para: <título>`. O asunto do correo segue sendo `[WEB ANPA] Bota unha man`.
+- A colección de **Ideas en marcha** é distinta das tarefas: a idea expón un proxecto e o taboleiro de axudas pide unha colaboración concreta.
+- Antes de subir fotografías, confirmar dereitos de uso e evitar imaxes identificables de menores ou terceiras persoas sen autorización.
