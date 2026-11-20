@@ -111,3 +111,10 @@ Desde `/admin/` → **Bota unha man · axudas concretas** pódense engadir, edit
 - Os envíos inclúen `tipo=Inscrición nunha axuda concreta` e `asunto=Axuda para: <título>`. O asunto do correo segue sendo `[WEB ANPA] Bota unha man`.
 - A colección de **Ideas en marcha** é distinta das tarefas: a idea expón un proxecto e o taboleiro de axudas pide unha colaboración concreta.
 - Antes de subir fotografías, confirmar dereitos de uso e evitar imaxes identificables de menores ou terceiras persoas sen autorización.
+
+
+## Data, hora e cores nas tarefas de Bota unha man
+- No panel de administración, as tarefas teñen **Data da actividade**, **Hora de comezo** e **Hora de remate** (opcional, formato 24 h `HH:MM`). O campo **Tempo estimado** indica duración aproximada e non substitúe a hora de inicio.
+- A tarxeta utiliza cores propias da web: ocre suave para data, rosa suave para hora, menta para lugar e crema para duración. Non se empregan cores de estado enganosas.
+- Se non hai nin data nin hora, a tarxeta indica **Data e hora por concretar**. Non se deben inventar convocatorias: a tarefa do vimbio permanece sen data/hora ata que a ANPA o acorde co centro.
+- Se só se coñece a hora de inicio, non se amosa unha hora de fin. Se existe unha hora final posterior, a web amosa o intervalo.
