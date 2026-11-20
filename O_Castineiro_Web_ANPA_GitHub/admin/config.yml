@@ -101,6 +101,31 @@ collections:
       - {label: "Exemplo ficticio", name: "exemplo", widget: "boolean", default: false}
       - {label: "Publicada", name: "publicado", widget: "boolean", default: false}
 
+  - name: "axudas"
+    label: "Bota unha man · axudas concretas"
+    label_singular: "Axuda concreta"
+    description: "Tarefas pequenas e reais para colaboración puntual. Só información pública: non introducir datos persoais no repositorio público."
+    folder: "O_Castineiro_Web_ANPA_GitHub/content/axudas"
+    create: true
+    extension: "json"
+    format: "json"
+    slug: "{{slug}}"
+    identifier_field: "titulo"
+    fields:
+      - {label: "Que fai falta?", name: "titulo", widget: "string"}
+      - {label: "Que habería que facer?", name: "descripcion", widget: "text"}
+      - {label: "Tempo estimado", name: "tempo", widget: "string", required: false, hint: "Ex.: 30 minutos, 1 tarde"}
+      - {label: "Data", name: "data", widget: "datetime", required: false, format: "YYYY-MM-DD", date_format: "DD/MM/YYYY", time_format: false}
+      - {label: "Lugar ou modalidade", name: "lugar", widget: "string", required: false, hint: "Ex.: Desde a casa"}
+      - label: "Estado"
+        name: "estado"
+        widget: "select"
+        default: "aberta"
+        options:
+          - {label: "Precisamos axuda", value: "aberta"}
+          - {label: "Axuda cuberta", value: "cuberta"}
+          - {label: "Pechada", value: "pechada"}
+      - {label: "Publicar na web", name: "publicado", widget: "boolean", default: false}
   - name: "transparencia"
     label: "Información para participar"
     label_singular: "Publicación"
