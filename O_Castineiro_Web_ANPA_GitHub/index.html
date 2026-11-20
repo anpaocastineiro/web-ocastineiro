@@ -120,6 +120,18 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 .nav>a.nav-private:not(.btn){background:var(--mint);color:var(--green);border:1px solid rgba(15,61,50,.24);border-radius:4px;padding:8px 11px;white-space:nowrap}
 .nav>a.nav-private:not(.btn):hover,.nav>a.nav-private:not(.btn):focus-visible{background:#C8E0CE;border-color:var(--green)}
 @media(min-width:1251px){.nav{gap:clamp(8px,.85vw,14px)}.nav>a:not(.btn){font-size:12px}}
+
+.help-intro{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(210px,.75fr);gap:28px;align-items:center;background:var(--mint);border:1.5px solid #0f3d3240;padding:27px 30px;margin-bottom:30px}
+.help-intro h3{font-size:clamp(30px,3.4vw,46px);margin:12px 0;color:var(--green)}.help-intro p{font-size:15px;line-height:1.55;margin:0}.help-actions{display:grid;gap:12px}
+.help-list-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:17px}.help-list-head h3{font:900 clamp(30px,3vw,40px)/1.08 var(--serif);color:var(--green);margin:9px 0 0}.help-list-head p{max-width:300px}
+.help-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.help-card{display:flex;flex-direction:column;gap:12px;background:var(--paper);border:1.5px solid #0f3d3240;border-radius:8px;padding:22px;min-width:0}.help-card:nth-child(3n+2){background:var(--pink-soft)}.help-card:nth-child(3n+3){background:var(--mint)}
+.help-card h4{font:900 27px/1.08 var(--serif);color:var(--green);margin:0}.help-card p{font-size:14px;line-height:1.5;overflow-wrap:anywhere;margin:0}
+.help-meta{display:flex;flex-wrap:wrap;gap:7px}.help-meta span{padding:6px 9px;border:1px solid #0f3d3240;border-radius:4px;font-size:12px;font-weight:800;color:var(--green)}.help-card button{margin-top:auto;align-self:flex-start}
+.help-empty{grid-column:1/-1;border:1.5px dashed #0f3d3275;border-radius:7px;padding:23px;background:var(--paper);line-height:1.5;color:var(--green)}
+.help-note{margin-top:15px}
+@media(max-width:900px){.help-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.help-intro{grid-template-columns:1fr}}
+@media(max-width:600px){.help-grid{grid-template-columns:1fr}.help-list-head{display:block}.help-intro{padding:22px 19px}}
 </style>
 </head>
 <body>
@@ -215,12 +227,12 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
  <div class="idea-grid"><article class="idea-card" data-state="recollida"><span class="tag">EXEMPLO · RECOLLIDA</span><h3>Espazos de sombra no patio</h3><p>Unha familia achega a idea de estudar alternativas para os días de máis calor.</p><button class="text-action" data-sample="patio">Ver o exemplo ↗</button></article><article class="idea-card" data-state="conversa"><span class="tag">EXEMPLO · EN CONVERSA</span><h3>Convivencia e metodoloxías</h3><p>Compartir inquedanzas e formular preguntas colectivas sobre a vida escolar.</p><button class="text-action" data-sample="convivencia">Ver o exemplo ↗</button></article><article class="idea-card" data-state="seguimento"><span class="tag">EXEMPLO · EN SEGUIMENTO</span><h3>Espazo de intercambio de libros</h3><p>Buscar un xeito comunitario de compartir lecturas, recursos e experiencias.</p><button class="text-action" data-sample="libros">Ver o exemplo ↗</button></article></div>
  <div class="ideas-more"><a href="/iniciativas.html">Ver todas as iniciativas ↗</a> <span id="contadorIniciativas" class="minor"></span></div>
  </div></section>
-<section class="section alternate paper" id="grupos" aria-labelledby="axuda-titulo"><div class="container"><div class="section-head"><div><span class="overline">03 · Bota unha man</span><h2 id="axuda-titulo">Cando poidas, como poidas.</h2></div><p>Non fai falta asistir a reunións nin asumir un compromiso permanente. Ás veces chega con compartir unha idea, dar unha opinión ou axudar nun momento concreto.</p></div><div class="groups">
- <article class="group"><svg class="icon"><use href="#ic-document"/></svg><h3>Axudar a comunicar</h3><p>Compartir un aviso, revisar un texto ou facer chegar información a outras familias.</p><button class="text-action" type="button" data-group="comunicacion">Ver como colaborar ↗</button></article>
- <article class="group"><svg class="icon"><use href="#ic-group"/></svg><h3>Facer comunidade</h3><p>Dar a benvida a outras familias ou botar unha man nun encontro ou actividade puntual.</p><button class="text-action" type="button" data-group="comunidade">Ver como colaborar ↗</button></article>
- <article class="group"><svg class="icon"><use href="#ic-book"/></svg><h3>Compartir ideas sobre a escola</h3><p>Contar unha preocupación, propoñer melloras ou achegar un recurso útil.</p><button class="text-action" type="button" data-group="educacion">Ver como colaborar ↗</button></article>
- </div><p class="minor" style="margin:16px 0 0"><strong>Non son obrigas nin grupos aos que teñas que apuntarte.</strong> Son maneiras posibles de participar, aínda por acordar colectivamente. Tamén podes simplemente propoñer unha idea, sen encargarte de levala adiante.</p>
- </div></section>
+<section class="section alternate paper" id="grupos" aria-labelledby="axuda-titulo"><div class="container">
+<div class="section-head"><div><span class="overline">03 · Bota unha man</span><h2 id="axuda-titulo">Cando poidas, como poidas.</h2></div><p>Non fai falta formar parte dun grupo nin asumir unha responsabilidade fixa. Hai moitas formas de participar, tamén cando só tes un anaquiño de tempo.</p></div>
+<div class="help-intro"><div><span class="kicker">Unha pequena achega tamén conta</span><h3 class="serif">Axudar unha vez tamén é participar.</h3><p>Podes compartir unha opinión, propoñer algo novo ou botar unha man nunha tarefa concreta. E se agora non podes, non pasa nada.</p></div><div class="help-actions"><button class="btn primary" id="ofrecerAxuda" type="button">Quero botar unha man ↗</button><a class="btn secondary" href="#ideas">Ver ideas en marcha ↗</a></div></div>
+<div class="help-list-head"><div><span class="kicker">Colaboracións puntuais</span><h3>Axudas que fan falta.</h3></div><p class="minor">Cada proposta indicará que se precisa e canto tempo pode levar.</p></div>
+<div id="axudasList" class="help-grid" aria-live="polite"><p class="minor">Consultando as axudas dispoñibles…</p></div><p id="axudasAviso" class="minor help-note">Só aparecen tarefas publicadas pola ANPA. A organización interna non require participar en grupos.</p>
+</div></section>
 <section class="section children" id="crianzas"><div class="container"><div class="children-grid"><div><div class="overline">04 · A voz das crianzas</div><h2 class="serif" style="font-size:clamp(42px,5vw,70px);color:var(--paper);margin:17px 0 18px">O cole tamén é seu.</h2><p class="copy">As crianzas teñen opinións sobre o patio, as clases e os espazos onde medran. Aquí poden escribir as súas ideas e facelas chegar á ANPA, coa axuda dunha persoa adulta responsable.</p><button class="btn secondary" data-open="crianzas" type="button">Enviar unha idea á ANPA ↗</button><p class="minor" style="color:#E7E8D8;margin-top:17px">Non fai falta poñer nomes nin contar datos persoais. As mensaxes non se publican.</p></div><div class="children-image"><img src="assets/rama.webp" alt=""/><span class="caption">A súa voz tamén conta.</span></div></div></div></section>
 <section class="section paper" id="transparencia"><div class="container"><div class="section-head"><div><span class="overline">05 · As cousas claras</span><h2>Información para participar.</h2></div><p>Saber que se propuxo, que se decidiu, que está pendente e a quen corresponde dar resposta.</p></div><div class="trans-grid">
  <article class="trans"><svg class="icon"><use href="#ic-document"/></svg><h3>Actas e acordos</h3><p>Resumos das reunións e acordos, cando se aprobe o procedemento de publicación.</p><button class="text-action" data-doc="actas">Consultar ↗</button></article>
@@ -289,7 +301,7 @@ if(privateContactForm){
 }
 const membershipForm=document.forms['alta-socias'];
 if(membershipForm)membershipForm.addEventListener('submit',event=>{event.preventDefault();submitANPAForm(membershipForm)});
-function makeModalForm(kind){
+function makeModalForm(kind,taskTitle=''){
  const block=document.createElement('div');
  if(kind==='crianzas'){
   block.innerHTML='<p>Podes contar unha idea para mellorar o cole. Escríbea coas túas palabras. Non fai falta dicir quen es.</p>'+
@@ -310,6 +322,11 @@ function makeModalForm(kind){
   '<label class="form-consent"><input name="informacion_privacidade" value="lin-e-acepto" type="checkbox" required><span>Lin a <a href="/privacidade.html" target="_blank" rel="noopener noreferrer">información de privacidade</a> e solicito que a ANPA reciba esta mensaxe.</span></label>'+
   '<button type="submit" class="btn primary">Enviar á ANPA ↗</button><p class="form-status" role="status" aria-live="polite"></p></form>';
  }
+ if(kind==='axuda'){
+   const subject=block.querySelector('[name="asunto"]');if(subject){subject.value=taskTitle?'Axuda para: '+taskTitle:'Ofrecer colaboración puntual';subject.type='hidden';subject.required=false;block.querySelector('label[for="asuntoProposta"]')?.remove()}
+   const email=block.querySelector('[name="email"]');if(email){email.required=true;block.querySelector('label[for="correoProposta"]').textContent='Correo para contactar contigo'}
+   const message=block.querySelector('[name="mensaxe"]');if(message){message.required=false;message.placeholder='Cando che viría ben? (opcional)';block.querySelector('label[for="mensaxeProposta"]').textContent='Se queres, engade algún detalle (opcional)'}
+ }
  dialogBody.appendChild(block);
  const form=block.querySelector('form');
  form.addEventListener('submit',event=>{event.preventDefault();submitANPAForm(form)});
@@ -321,6 +338,28 @@ $$('[data-open]').forEach(el=>el.addEventListener('click',()=>{
 }));
 const names={comunicacion:'Axudar a comunicar',comunidade:'Facer comunidade',educacion:'Compartir ideas sobre a escola'};function openGroup(id){openDialog(names[id]);p('Podes achegar unha idea, unha opinión ou unha axuda puntual. Non tes que vir a reunións nin comprometerte a seguir colaborando.');p('Se non tes tempo agora, tamén está ben. A participación non depende de canto traballo poidas asumir.');const help=document.createElement('button');help.type='button';help.className='btn primary';help.textContent='Quero botar unha man ↗';help.addEventListener('click',()=>{openDialog('Bota unha man, cando poidas');makeModalForm('axuda')});dialogBody.appendChild(help);if(settings.groupInvites[id]){link('Espazo de coordinación en WhatsApp ↗',settings.groupInvites[id]);note('Nese grupo de WhatsApp o teu número podería ser visible para as demais persoas integrantes.')}}$$('[data-group]').forEach(b=>b.addEventListener('click',()=>openGroup(b.dataset.group)));
 // Publicacións autorizadas para a sección de transparencia, xeradas por Decap CMS no build.
+function openHelpForm(taskTitle=''){openDialog(taskTitle?'Axuda para: '+taskTitle:'Bota unha man, cando poidas');makeModalForm('axuda',taskTitle)}
+const offerHelp=$('#ofrecerAxuda');if(offerHelp)offerHelp.addEventListener('click',()=>openHelpForm());
+const helpGrid=$('#axudasList');
+function showHelpEmpty(text){if(helpGrid){const p=document.createElement('p');p.className='help-empty';p.textContent=text;helpGrid.replaceChildren(p)}}
+fetch('/content/axudas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('HTTP '+r.status);return r.json()}).then(data=>{
+ if(!helpGrid)return;
+ const items=(Array.isArray(data.items)?data.items:[]).filter(x=>x&&x.publicado===true&&x.estado==='aberta'&&typeof x.titulo==='string'&&x.titulo.trim());
+ if(!items.length){showHelpEmpty('Agora mesmo non hai axudas concretas publicadas. Podes ofrecer a túa colaboración ou compartir unha idea.');return}
+ const frag=document.createDocumentFragment();
+ for(const task of items.slice(0,9)){
+  const card=document.createElement('article');card.className='help-card';
+  const h=document.createElement('h4');h.textContent=task.titulo;card.append(h);
+  if(task.descripcion){const p=document.createElement('p');p.textContent=task.descripcion;card.append(p)}
+  const meta=document.createElement('div');meta.className='help-meta';
+  for(const value of [task.tempo?'Tempo: '+task.tempo:'',task.lugar?'Lugar: '+task.lugar:'',task.data&&/^\d{4}-\d{2}-\d{2}$/.test(task.data)?'Data: '+task.data.split('-').reverse().join('/'):'']){
+   if(value){const span=document.createElement('span');span.textContent=value;meta.append(span)}
+  }
+  if(meta.childElementCount)card.append(meta);
+  const btn=document.createElement('button');btn.type='button';btn.className='text-action';btn.textContent='Podo botar unha man ↗';btn.addEventListener('click',()=>openHelpForm(task.titulo));card.append(btn);frag.append(card);
+ }
+ helpGrid.replaceChildren(frag);
+}).catch(()=>showHelpEmpty('Non foi posible consultar as axudas. Podes ofrecer unha colaboración co botón anterior.'));
 const transparencyLabels={actas:'Actas e acordos',propostas:'Propostas e respostas',convocatorias:'Convocatorias',contas:'Contas e orzamentos'};
 let transparencyItems=[],transparencyLoadFailed=false;
 function publicTransparencyLink(value){
@@ -372,7 +411,7 @@ fetch('/content/transparencia.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw 
 $$('[data-sample]').forEach(b=>b.addEventListener('click',()=>{openDialog('Exemplo de seguimento dunha proposta');p('Un asunto pode pasar pola recollida inicial, a conversa colectiva, a preparación dunha proposta e a devolución da resposta.');p('A información pública non debería incluír datos persoais nin identificar menores.');note('Este caso é ficticio e só serve para ensinar como funcionaría o taboleiro.')}));
 $$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.filter;$$('[data-filter]').forEach(a=>a.setAttribute('aria-pressed',String(a===b)));if(publicIdeas.length)renderPublicIdeas(v);else $$('.idea-card').forEach(c=>c.hidden=v!=='todos'&&v!==c.dataset.state)}));
 $('#waTalk').addEventListener('click',()=>{openDialog('WhatsApp da ANPA');if(settings.whatsappNumber){link('Abrir conversa ↗','https://wa.me/'+settings.whatsappNumber.replace(/\D/g,''))}else{p('Aínda non se configurou un número oficial de WhatsApp nesta versión.');note('Non se inventaron contactos nin se enviarán mensaxes automaticamente.')}});
-$('#waGroups').addEventListener('click',()=>{openDialog('Bota unha man');p('Podes participar da maneira que che veña ben, con pequenas achegas ou axudas puntuais. Non hai grupos aos que sexa obrigatorio incorporarse.');for(const id of Object.keys(names)){const b=document.createElement('button');b.className='btn secondary';b.style.cssText='display:flex;width:100%;margin:9px 0';b.textContent=names[id]+' ↗';b.addEventListener('click',()=>openGroup(id));dialogBody.appendChild(b)}});
+$('#waGroups').addEventListener('click',()=>{toggleWA(false);document.getElementById('grupos')?.scrollIntoView({behavior:'smooth'});});
 
 // Unha única fonte de datos pública compilada a partir de Decap CMS.
 let publicIdeas=[];
