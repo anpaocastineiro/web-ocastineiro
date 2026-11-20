@@ -127,7 +127,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 .help-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
 .help-card{display:flex;flex-direction:column;gap:12px;background:var(--paper);border:1.5px solid #0f3d3240;border-radius:8px;padding:22px;min-width:0}.help-card:nth-child(3n+2){background:var(--pink-soft)}.help-card:nth-child(3n+3){background:var(--mint)}
 .help-card h4{font:900 27px/1.08 var(--serif);color:var(--green);margin:0}.help-card .help-image{width:100%;aspect-ratio:16/10;object-fit:cover;border-radius:5px;border:1px solid rgba(15,61,50,.22);background:var(--mint);margin-bottom:3px}.help-card .help-caption{font-size:11px;line-height:1.4;color:var(--green);opacity:.83;margin-top:-8px}.help-card p{font-size:14px;line-height:1.5;overflow-wrap:anywhere;margin:0}
-.help-meta{display:flex;flex-wrap:wrap;gap:7px}.help-meta span{padding:6px 9px;border:1px solid #0f3d3240;border-radius:4px;font-size:12px;font-weight:800;color:var(--green)}.help-card button{margin-top:auto;align-self:flex-start}.help-card .btn{width:100%;padding:11px 12px;text-align:center}.help-card{overflow:hidden}
+.help-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:flex-start}.help-meta .help-pill{display:inline-flex;align-items:center;max-width:100%;gap:5px;padding:7px 10px;border:1px solid rgba(15,61,50,.36);border-radius:5px;font-size:12px;line-height:1.35;font-weight:800;color:var(--green);overflow-wrap:anywhere}.help-pill time{font:inherit}.help-pill--date{background:var(--ochre-soft)}.help-pill--hour{background:var(--pink-soft)}.help-pill--place{background:var(--mint)}.help-pill--duration{background:var(--paper)}.help-pill--pending{background:#E3EDE2;border-style:dashed!important}.help-card button{margin-top:auto;align-self:flex-start}.help-card .btn{width:100%;padding:11px 12px;text-align:center}.help-card{overflow:hidden}
 .help-empty{grid-column:1/-1;border:1.5px dashed #0f3d3275;border-radius:7px;padding:23px;background:var(--paper);line-height:1.5;color:var(--green)}
 .help-note{margin-top:15px}
 @media(max-width:900px){.help-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.help-intro{grid-template-columns:1fr}}
@@ -362,10 +362,21 @@ fetch('/content/axudas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('
   const h=document.createElement('h4');h.textContent=task.titulo;card.append(h);
   if(task.descripcion){const p=document.createElement('p');p.textContent=task.descripcion;card.append(p)}
   const meta=document.createElement('div');meta.className='help-meta';
-  for(const value of [task.tempo?'Tempo: '+task.tempo:'',task.lugar?'Lugar: '+task.lugar:'',task.data&&/^\d{4}-\d{2}-\d{2}$/.test(task.data)?'Data: '+task.data.split('-').reverse().join('/'):'']){
-   if(value){const span=document.createElement('span');span.textContent=value;meta.append(span)}
+  function addHelpPill(text,kind,dateTimeValue=''){
+   const pill=document.createElement('span');pill.className='help-pill help-pill--'+kind;
+   if(dateTimeValue){const time=document.createElement('time');time.dateTime=dateTimeValue;time.textContent=text;pill.append(time)}
+   else pill.textContent=text;
+   meta.append(pill);
   }
-  if(meta.childElementCount)card.append(meta);
+  const date=typeof task.data==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(task.data)?task.data:'';
+  const start=typeof task.hora==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(task.hora)?task.hora:'';
+  const end=typeof task.hora_fin==='string'&&/^([01]\d|2[0-3]):[0-5]\d$/.test(task.hora_fin)?task.hora_fin:'';
+  if(date)addHelpPill('📅 '+date.split('-').reverse().join('/'),'date',date);
+  if(start)addHelpPill('🕒 '+(end&&end>start?start+'–'+end:start),'hour',date?date+'T'+start:'');
+  if(!date&&!start)addHelpPill('Data e hora por concretar','pending');
+  if(task.lugar)addHelpPill('📍 '+task.lugar,'place');
+  if(task.tempo)addHelpPill('Duración: '+task.tempo,'duration');
+  card.append(meta);
   const btn=document.createElement('button');btn.type='button';btn.className='btn primary';btn.textContent='Quero apuntarme ↗';btn.setAttribute('aria-label','Solicitar apuntarme a: '+task.titulo);btn.addEventListener('click',()=>openHelpForm(task.titulo));card.append(btn);frag.append(card);
  }
  helpGrid.replaceChildren(frag);
