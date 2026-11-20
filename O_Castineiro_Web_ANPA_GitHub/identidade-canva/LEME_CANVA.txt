@@ -1,0 +1,33 @@
+O CASTIÑEIRO · PAQUETE DE IDENTIDADE PARA CANVA GRATUÍTO
+========================================================
+
+Todos os PNG co sufixo _alpha teñen transparencia real.
+Podes subilos a Canva gratuíto en «Subidos / Cargar ficheiros».
+
+01  Logo horizontal en cor, para fondos claros.
+02  Logo horizontal verde, unha tinta.
+03  Logo horizontal branco, para fondos escuros.
+04  Isotipo en cor, sen o nome.
+05  Isotipo verde, sen o nome.
+06  Isotipo branco, sen o nome.
+07  Isotipo en cor cadrado e centrado, fondo transparente.
+08  Isotipo branco cadrado e centrado, fondo transparente.
+09  Avatar cadrado sobre verde (sen transparencia), para perfís.
+10  Isotipo en cor no tamaño de partida, sen interpolación.
+11  Logo horizontal centrado en lenzo 2800×1200 transparente.
+
+O ficheiro ZIP inclúe tamén os tres orixinais extraídos da web.
+
+IMPORTANTE SOBRE A RESOLUCIÓN:
+Os orixinais da web son rasterizados (WebP e PNG). Os ficheiros
+ampliados teñen máis píxeles para facilitar o traballo en Canva,
+pero non son vectores nin gañan o detalle dun SVG mestre.
+O isotipo a cor procede do favicon pequeno da web; para pezas
+moi grandes recoméndase recuperar o orixinal vectorial se existe.
+
+SOBRE O USO:
+- Fondos claros: logo ou isotipo en cor.
+- Fondos escuros: versión branca.
+- Perfil de redes: 09 ou 07.
+- Non deformes a proporción nin superpoñas texto sobre a marca.
+- Non son necesarios Canva Pro nin plugins para importar PNG.
