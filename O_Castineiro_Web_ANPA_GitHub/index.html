@@ -225,7 +225,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
 <div id="actualidade"></div><section class="section alternate paper" id="encontros"><div class="container">
  <div class="section-head"><div><span class="overline">01 · Encontros abertos</span><h2>E se nos sentamos a falar?</h2></div><p>Un espazo para preguntar, escoitar outras familias e pensar xuntas. Sen necesidade de estar todas de acordo.</p></div>
  <div class="two-col"><article class="feature-panel panel riso"><div class="art"><img src="assets/ourizo.webp" alt=""/></div><div><span class="stamp">Unha proposta de funcionamento</span><h3>A orde do día tamén a fas ti.</h3><p>Nos encontros xerais poderías propoñer un asunto antes da convocatoria. Nos encontros temáticos falaríase do tema anunciado.</p><button type="button" data-open="participacion" class="btn primary small" style="margin-top:15px">Fala coa ANPA ↗</button></div></article>
- <div style="display:flex;flex-direction:column;justify-content:center"><span class="kicker">Falar · escoitar · dar resposta</span><h3 class="serif" style="font-size:clamp(36px,4.3vw,61px);margin:13px 0 15px">O importante é que as conversas continúen.</h3><p style="line-height:1.55">Cada encontro podería rematar cun resumo, os próximos pasos e as cuestións que deben trasladarse á Asemblea Xeral ou ao centro educativo.</p><div class="notice">Próximo encontro: <strong>pendente de acordar e convocar</strong>.</div></div></div>
+ <div style="display:flex;flex-direction:column;justify-content:center"><span class="kicker">Falar · escoitar · dar resposta</span><h3 class="serif" style="font-size:clamp(36px,4.3vw,61px);margin:13px 0 15px">O importante é que as conversas continúen.</h3><p style="line-height:1.55">Cada encontro podería rematar cun resumo, os próximos pasos e as cuestións que deben trasladarse á Asemblea Xeral ou ao centro educativo.</p><div class="notice" id="proximaAsemblea" aria-live="polite">Próxima Asemblea Xeral: <strong>pendente de convocar</strong>.</div></div></div>
  <div class="number-grid"><div class="number"><strong>01</strong><h3>Propoñer</h3><p>Calquera familia pode achegar asuntos e contribuír á orde do día.</p></div><div class="number"><strong>02</strong><h3>Conversar</h3><p>Escoita activa, quendas de palabra e espazo para discrepar.</p></div><div class="number"><strong>03</strong><h3>Dar resposta</h3><p>Resumo público dos acordos e seguimento do que se propuxo.</p></div></div>
  </div></section>
 <section class="section paper" id="ideas"><div class="container"><div class="section-head"><div><span class="overline">02 · Ideas en marcha</span><h2>Que pasa coas propostas?</h2></div><p>Un taboleiro que permita coñecer o estado dos asuntos colectivos e saber por que avanzan ou quedan pendentes.</p></div>
@@ -485,6 +485,32 @@ $$('[data-sample]').forEach(b=>b.addEventListener('click',()=>{openDialog('Exemp
 $$('[data-filter]').forEach(b=>b.addEventListener('click',()=>{const v=b.dataset.filter;$$('[data-filter]').forEach(a=>a.setAttribute('aria-pressed',String(a===b)));if(publicIdeas.length)renderPublicIdeas(v);else $$('.idea-card').forEach(c=>c.hidden=v!=='todos'&&v!==c.dataset.state)}));
 $('#waTalk').addEventListener('click',()=>{openDialog('WhatsApp da ANPA');if(settings.whatsappNumber){link('Abrir conversa ↗','https://wa.me/'+settings.whatsappNumber.replace(/\D/g,''))}else{p('Aínda non se configurou un número oficial de WhatsApp nesta versión.');note('Non se inventaron contactos nin se enviarán mensaxes automaticamente.')}});
 
+
+// Convocatoria visible na páxina. A Axenda de Decap alimenta o ficheiro compilado actualidade.json.
+const avisoAsemblea=document.getElementById('proximaAsemblea');
+if(avisoAsemblea){
+ fetch('/content/actualidade.json',{cache:'no-store'})
+  .then(r=>{if(!r.ok)throw new Error('Axenda non dispoñible');return r.json()})
+  .then(d=>{
+   const agora=new Date();
+   const eventos=(Array.isArray(d.axenda)?d.axenda:[])
+    .filter(x=>x&&x.tipo==='asemblea_xeral'&&x.estado==='confirmada'&&x.publicado===true&&typeof x.data==='string')
+    .map(x=>({...x,inicio:new Date(x.data)}))
+    .filter(x=>!Number.isNaN(x.inicio.getTime())&&x.inicio>=agora)
+    .sort((a,b)=>a.inicio-b.inicio);
+   if(!eventos.length)return;
+   const evento=eventos[0];
+   const data=evento.inicio.toLocaleDateString('gl-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+   const hora=evento.inicio.toLocaleTimeString('gl-ES',{hour:'2-digit',minute:'2-digit',hour12:false});
+   avisoAsemblea.replaceChildren();
+   avisoAsemblea.append(document.createTextNode('Próxima Asemblea Xeral: '));
+   const strong=document.createElement('strong');
+   strong.textContent=data+' ás '+hora+' h';
+   avisoAsemblea.append(strong);
+   if(typeof evento.lugar==='string'&&evento.lugar.trim())avisoAsemblea.append(document.createTextNode(' · '+evento.lugar.trim()));
+  })
+  .catch(e=>console.warn('Non se puido cargar a próxima asemblea:',e));
+}
 
 // Unha única fonte de datos pública compilada a partir de Decap CMS.
 let publicIdeas=[];
