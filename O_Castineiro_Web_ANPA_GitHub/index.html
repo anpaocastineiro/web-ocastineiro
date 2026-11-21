@@ -232,7 +232,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
  <div class="board-grid"><article class="bulletin riso"><span class="poster-stamp">A comunidade tamén constrúe escola</span><h3>As ideas<br>tamén botan<br>raíces.</h3><p>Compartir, debater, facer unha proposta e contar que pasou despois.</p><button class="text-action" data-open="participacion" type="button">Compartir unha proposta ↗</button><div class="poster-icon" aria-hidden="true"><svg class="icon"><use href="#ic-bulb"/></svg></div></article>
   
  </div>
- <p class="minor" style="margin:31px 0 9px">Aquí poderás consultar as iniciativas que a ANPA publique e o estado no que se atopan.</p><div class="filter-row" role="group" aria-label="Filtrar iniciativas por estado" hidden><button class="filter" data-filter="todos" aria-pressed="true">Todas</button><button class="filter" data-filter="recollida" aria-pressed="false">Recollidas</button><button class="filter" data-filter="conversa" aria-pressed="false">En conversa</button><button class="filter" data-filter="seguimento" aria-pressed="false">En seguimento</button><button class="filter" data-filter="resolta" aria-pressed="false">Resoltas</button></div>
+ <p class="minor" style="margin:31px 0 9px"><strong>Exemplos ficticios para coñecer os catro estados:</strong> recollida, en conversa, en seguimento e resolta. Son casos ilustrativos, non actuacións realizadas pola ANPA. As propostas reais aparecerán aquí cando se publiquen.</p><div class="filter-row" role="group" aria-label="Filtrar iniciativas por estado" hidden><button class="filter" data-filter="todos" aria-pressed="true">Todas</button><button class="filter" data-filter="recollida" aria-pressed="false">Recollidas</button><button class="filter" data-filter="conversa" aria-pressed="false">En conversa</button><button class="filter" data-filter="seguimento" aria-pressed="false">En seguimento</button><button class="filter" data-filter="resolta" aria-pressed="false">Resoltas</button></div>
  <div class="idea-grid"><p class="minor">Aínda non hai iniciativas publicadas. As novas propostas aparecerán aquí cando a ANPA as comparta.</p></div>
  <div class="ideas-more"><a href="/iniciativas.html">Ver todas as iniciativas ↗</a> <span id="contadorIniciativas" class="minor"></span></div>
  </div></section>
@@ -521,7 +521,7 @@ function renderPublicIdeas(state='todos'){
  const filtros=$('.filter-row');if(filtros)filtros.hidden=publicIdeas.length===0;
  for(const item of list.slice(0,6)){
   const card=document.createElement('article');card.className='idea-card';card.dataset.state=item.estado;
-  const label=document.createElement('span');label.className='tag';label.textContent=(item.exemplo?'EXEMPLO · ':'')+ideaLabels[item.estado];
+  const label=document.createElement('span');label.className='tag';label.textContent=(item.exemplo?'EXEMPLO FICTICIO · ':'')+ideaLabels[item.estado];
   const h=document.createElement('h3');h.textContent=item.titulo||'Iniciativa';
   const desc=document.createElement('p');desc.textContent=item.descripcion||'';
   const btn=document.createElement('button');btn.className='text-action';btn.type='button';btn.textContent='Ver iniciativa ↗';
@@ -533,7 +533,7 @@ function renderPublicIdeas(state='todos'){
  const count=document.getElementById('contadorIniciativas');if(count)count.textContent=publicIdeas.length?'Amosando '+Math.min(6,list.length)+' de '+list.length:'';
 }
 fetch('/content/ideas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Fallo de carga');return r.json()}).then(d=>{
- publicIdeas=(d.items||[]).filter(x=>x.publicado===true&&x.exemplo!==true&&Object.prototype.hasOwnProperty.call(ideaLabels,x.estado));
+ publicIdeas=(d.items||[]).filter(x=>x.publicado===true&&Object.prototype.hasOwnProperty.call(ideaLabels,x.estado));
  renderPublicIdeas(document.querySelector('[data-filter][aria-pressed="true"]')?.dataset.filter||'todos');
  const aviso=document.getElementById('avisoTaboleiro');if(aviso)aviso.textContent=publicIdeas.length?'Iniciativas e propostas publicadas pola asociación.':'Aínda non hai iniciativas publicadas.';
 }).catch(e=>console.warn('Contido CMS non dispoñible:',e));
