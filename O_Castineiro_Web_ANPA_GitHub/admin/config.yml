@@ -77,8 +77,8 @@ collections:
       - {label: "Exemplo ficticio", name: "exemplo", widget: "boolean", default: false}
       - {label: "Publicada", name: "publicado", widget: "boolean", default: false}
   - name: "axenda"
-    label: "Axenda (oculta na portada)"
-    description: "Colección desactivada na portada. Non introducir listas de asistentes nin datos de contacto."
+    label: "Axenda · encontros e asembleas"
+    description: "Convocatorias públicas. As asembleas xerais confirmadas aparecen automaticamente no aviso de Encontros. Non introducir listas de asistentes nin datos de contacto."
     folder: "O_Castineiro_Web_ANPA_GitHub/content/axenda"
     create: true
     extension: "json"
@@ -87,6 +87,14 @@ collections:
     identifier_field: "titulo"
     fields:
       - {label: "Título", name: "titulo", widget: "string"}
+      - label: "Tipo de convocatoria"
+        name: "tipo"
+        widget: "select"
+        default: "outro"
+        options:
+          - {label: "Asemblea Xeral", value: "asemblea_xeral"}
+          - {label: "Encontro aberto", value: "encontro"}
+          - {label: "Outra actividade", value: "outro"}
       - {label: "Descrición", name: "descripcion", widget: "text"}
       - {label: "Inicio", name: "data", widget: "datetime", format: "YYYY-MM-DDTHH:mm:ss"}
       - {label: "Remate", name: "fin", widget: "datetime", required: false, format: "YYYY-MM-DDTHH:mm:ss"}
