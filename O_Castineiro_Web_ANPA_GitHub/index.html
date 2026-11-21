@@ -248,7 +248,7 @@ body:after{content:'';position:fixed;inset:0;pointer-events:none;z-index:98;back
  <article class="trans"><svg class="icon"><use href="#ic-chat"/></svg><h3>Propostas e respostas</h3><p>Seguimento de iniciativas colectivas, sen datos persoais.</p><button class="text-action" data-doc="propostas">Consultar ↗</button></article>
  <article class="trans"><svg class="icon"><use href="#ic-calendar"/></svg><h3>Convocatorias</h3><p>Encontros, asuntos propostos e información práctica.</p><button class="text-action" data-doc="convocatorias">Consultar ↗</button></article>
  <article class="trans"><svg class="icon"><use href="#ic-eye"/></svg><h3>Contas e orzamentos</h3><p>Información económica para as persoas socias, conforme aos estatutos e á privacidade.</p><button class="text-action" data-doc="contas">Consultar ↗</button></article>
- </div><div class="notice" id="avisoTransparencia">A sección está preparada como estrutura. <strong>Aínda non incorpora documentos oficiais da ANPA.</strong></div>
+ </div><div class="notice" id="avisoTransparencia">Aínda non hai documentos publicados neste apartado. Compartiranse cando estean revisados e autorizados.</div>
  </div></section>
 <section class="section socias paper" id="socias" aria-labelledby="socias-titulo"><div class="container socias-layout">
 <div class="socias-copy"><span class="overline">06 · Súmate a O Castiñeiro</span><h2 id="socias-titulo">A escola tamén se constrúe entre todas.</h2><p>Facerte socia é apoiar unha asociación de familias aberta e participativa. Coas achegas podemos desenvolver actividades, compartir recursos e impulsar propostas para a nosa escola.</p>
@@ -530,7 +530,7 @@ function renderPublicIdeas(state='todos'){
  }
  if(!list.length){const empty=document.createElement('p');empty.className='minor';empty.textContent=publicIdeas.length?'Non hai iniciativas nesta categoría.':'Aínda non hai iniciativas publicadas. As propostas aparecerán aquí cando a ANPA as comparta.';fragment.append(empty)}
  grid.replaceChildren(fragment);
- const count=document.getElementById('contadorIniciativas');if(count)count.textContent='Amosando '+Math.min(6,list.length)+' de '+list.length;
+ const count=document.getElementById('contadorIniciativas');if(count)count.textContent=publicIdeas.length?'Amosando '+Math.min(6,list.length)+' de '+list.length:'';
 }
 fetch('/content/ideas.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('Fallo de carga');return r.json()}).then(d=>{
  publicIdeas=(d.items||[]).filter(x=>x.publicado===true&&x.exemplo!==true&&Object.prototype.hasOwnProperty.call(ideaLabels,x.estado));
