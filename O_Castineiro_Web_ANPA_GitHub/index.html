@@ -493,7 +493,7 @@ if(avisoAsemblea){
   .then(d=>{
    const agora=new Date();
    const eventos=(Array.isArray(d.axenda)?d.axenda:[])
-    .filter(x=>x&&x.tipo==='asemblea_xeral'&&x.estado==='confirmada'&&x.publicado===true&&typeof x.data==='string')
+    .filter(x=>x&&(x.tipo==='asemblea_xeral'||x.tipo==='encontro')&&x.estado==='confirmada'&&x.publicado===true&&typeof x.data==='string')
     .map(x=>({...x,inicio:new Date(x.data)}))
     .filter(x=>!Number.isNaN(x.inicio.getTime())&&x.inicio>=agora)
     .sort((a,b)=>a.inicio-b.inicio);
@@ -502,7 +502,7 @@ if(avisoAsemblea){
    const data=evento.inicio.toLocaleDateString('gl-ES',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
    const hora=evento.inicio.toLocaleTimeString('gl-ES',{hour:'2-digit',minute:'2-digit',hour12:false});
    avisoAsemblea.replaceChildren();
-   avisoAsemblea.append(document.createTextNode('Próxima Asemblea Xeral: '));
+   avisoAsemblea.append(document.createTextNode(evento.tipo==='asemblea_xeral'?'Próxima Asemblea Xeral: ':'Próximo encontro aberto: '));
    const strong=document.createElement('strong');
    strong.textContent=data+' ás '+hora+' h';
    avisoAsemblea.append(strong);
