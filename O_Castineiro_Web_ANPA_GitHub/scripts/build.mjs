@@ -5,7 +5,14 @@ await rm(out,{recursive:true,force:true});await mkdir(out,{recursive:true});
 for(const name of ['index.html','iniciativas.html','privacidade.html','__forms.html'])await cp(path.join(root,name),path.join(out,name));
 for(const folder of ['assets','admin'])await cp(path.join(root,folder),path.join(out,folder),{recursive:true});
 async function readItems(folder){const dir=path.join(root,'content',folder);const files=(await readdir(dir)).filter(n=>n.endsWith('.json')).sort(),items=[];for(const file of files){const item=JSON.parse(await readFile(path.join(dir,file),'utf8'));if(item.publicado!==true)continue;item.id=file.replace(/\.json$/,'');items.push(item)}return items}
-const items=(await readItems('iniciativas')).filter(item=>item.exemplo!==true);
+// Conservar só unha mostra ficticia por estado, sen confundir as demais coas propostas reais.
+const exemplosVisibles=new Set([
+  'espazos-de-sombra-no-patio',
+  'convivencia-e-metodoloxias',
+  'espazo-de-intercambio-de-libros',
+  'exemplo-caixa-de-material-escolar'
+]);
+const items=(await readItems('iniciativas')).filter(item=>item.exemplo!==true||exemplosVisibles.has(item.id));
 items.sort((a,b)=>String(b.data||'').localeCompare(String(a.data||'')));
 const novas=await readItems('novas'),axenda=await readItems('axenda');
 novas.sort((a,b)=>String(b.data).localeCompare(String(a.data)));axenda.sort((a,b)=>String(a.data).localeCompare(String(b.data)));
