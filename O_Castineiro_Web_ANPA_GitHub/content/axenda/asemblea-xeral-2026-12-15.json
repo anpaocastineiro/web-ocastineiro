@@ -1,0 +1,10 @@
+{
+  "titulo": "Asemblea Xeral",
+  "tipo": "asemblea_xeral",
+  "descripcion": "Asemblea Xeral da ANPA O Castiñeiro.",
+  "data": "2026-12-15T17:00:00",
+  "lugar": "Local da ANPA",
+  "estado": "confirmada",
+  "exemplo": false,
+  "publicado": true
+}
