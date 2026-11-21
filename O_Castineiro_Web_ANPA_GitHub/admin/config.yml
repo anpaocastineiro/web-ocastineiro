@@ -168,7 +168,7 @@ collections:
         name: "categoria"
         widget: "select"
         options:
-          - {label: "Actas e acordos", value: "actas"}
+          - {label: "Estatutos e actas", value: "actas"}
           - {label: "Propostas e respostas", value: "propostas"}
           - {label: "Convocatorias", value: "convocatorias"}
           - {label: "Contas e orzamentos", value: "contas"}
