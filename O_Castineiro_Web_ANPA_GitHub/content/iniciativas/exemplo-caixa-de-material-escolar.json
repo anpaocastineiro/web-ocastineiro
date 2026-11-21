@@ -1,0 +1,10 @@
+{
+  "titulo": "Caixa de material escolar compartido",
+  "descripcion": "Exemplo ficticio: unha familia propuxo crear unha caixa para compartir materiais escolares reutilizables entre as familias.",
+  "estado": "resolta",
+  "categoria": "comunidade",
+  "detalle": "Este caso inventado serve para explicar o estado «Resolto». Unha proposta considérase resolta cando hai unha resposta ou un acordo concreto, aínda que o seguimento de posibles tarefas posteriores poida continuar.",
+  "resultado": "Exemplo ficticio: acordouse facer unha experiencia piloto e revisar o seu funcionamento no seguinte encontro.",
+  "exemplo": true,
+  "publicado": true
+}
